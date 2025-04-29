@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id          Int     @id @default(autoincrement())
+  name        String
+  profile_pic String?
+  email       String  @unique
+  password    String
+  role        Role
+  is_active   Boolean @default(true)
+  semester    Int?
+  department  String? @db.VarChar(20)
+  UserMongoId String
+
+  // Relations
+  subjects    subject[]    @relation("facultySubjects") // faculty ne kaunse subjects padhaye
+  attendances attendance[] @relation("studentAttendances") // student ki attendance entries
+  attendance  attendance[] @relation("teachertakesattendance") // faculty ne kiska attence liyea
+  pdfs        pdf[]        @relation("posted_by")
+}
+
+enum Role {
+  student
+  faculty
+  admin
+}
+
+model subject {
+  id         Int    @id @default(autoincrement())
+  code       String @db.VarChar(30)
+  name       String
+  semester   Int
+  department String
+
+  facultyId Int
+  faculty   user @relation("facultySubjects", fields: [facultyId], references: [id])
+
+  attendances attendance[]
+}
+
+model attendance {
+  id        Int  @id @default(autoincrement())
+  studentId Int
+  student   user @relation("studentAttendances", fields: [studentId], references: [id])
+
+  subjectId  Int
+  subject    subject  @relation(fields: [subjectId], references: [id])
+  teacherId  Int
+  teacher    user     @relation("teachertakesattendance", fields: [teacherId], references: [id])
+  date       DateTime
+  is_present Status
+}
+
+enum Status {
+  present
+  absent
+  NA
+}
+
+model pdf {
+  id           Int         @id @default(autoincrement())
+  fileName     String
+  category     Category
+  year         Int
+  Department   Course
+  Pyq_category paper_type? // Optional for Technical category, validate in application logic
+  pdf_Url      String?
+  posted_by    Int
+  poster       user        @relation("posted_by", fields: [posted_by], references: [id])
+  expireAt     DateTime
+  createdAt    DateTime    @default(now())
+}
+
+enum Course {
+  BCA
+  BBA
+  MCA
+  Mtech
+  BSCIT
+  PGDM
+}
+
+enum Category {
+  Pyqs
+  Cimage_internal_exams
+  Montly_Test
+  Technical
+}
+
+enum paper_type {
+  Honours
+  Subsidiary
+  Composition
+}
