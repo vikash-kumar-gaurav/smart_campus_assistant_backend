@@ -26,7 +26,8 @@ model user {
   semester    Int?
   department  String?    @db.VarChar(20)
   UserMongoId String
-
+  isPremimum Boolean @default(false)
+  premimum_expire_at DateTime? 
   // Relations
   subjects    subject[] @relation("facultySubjects") // faculty ne kaunse subjects padhaye
   attendances attendance[] @relation("studentAttendances") // student ki attendance entries
@@ -51,6 +52,7 @@ model subject {
   faculty    user     @relation("facultySubjects", fields: [facultyId], references: [id])
 
   attendances attendance[]
+  
 }
 
 model attendance {
@@ -106,4 +108,28 @@ enum paper_type {
   Honours
   Subsidiary
   Composition
+}
+
+model Ebook {
+
+  id Int @id @default(autoincrement())
+  book_name String
+  writer String
+  genre String
+  description String
+  pdf_name String
+  pdf_url String?
+  pdf_url_createdAt DateTime
+  pdf_thumbnail Thumbnail @relation(fields:[ThumbnailId], references: [id])
+  ThumbnailId Int @unique
+  createdAt DateTime @default(now())
+
+}
+
+model Thumbnail {
+  id Int @id @default(autoincrement())
+  image_url String
+  public_id String
+  createdAt DateTime @default(now())
+  ebooks Ebook[]
 }

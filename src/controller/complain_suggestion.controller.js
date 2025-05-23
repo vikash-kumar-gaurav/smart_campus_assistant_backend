@@ -7,6 +7,7 @@ export async function createSuggestionController(req,res) {
     const { complain_suggestion, category } = req.body
     console.log(req.userData)
     const email = req.userData?.email
+    const userId = req.userData?.UserMongoId
     const images_URI = req.cloudinaryUrls ||  []
     
     
@@ -19,8 +20,7 @@ export async function createSuggestionController(req,res) {
             })
         }
 
-        const user = await User.findOne({email}).lean()
-        const userId = user._id
+        
         const result = await Suggestion.create({
             imageUrl:images_URI ,
             complain_suggestion,
@@ -43,7 +43,7 @@ export async function createSuggestionController(req,res) {
     }
 }
 
-//for deleting suggestion or complains
+
 // for deleting suggestion or complaints
 export async function deleteComplaneController(req, res) {
     const { complainId } = req.body;

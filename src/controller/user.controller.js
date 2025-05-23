@@ -136,7 +136,7 @@ export async function loginController(req,res) {
     try {
         const {email, password, rememberMe } = req.body
         const isremember = rememberMe === "true" || rememberMe ===true
-        console.log(email);
+        
         
         if(!email || !password){
             return res.status(409).json({
@@ -160,7 +160,8 @@ export async function loginController(req,res) {
         if(!isCorrectPassword){
             return res.status(401).json({
                 msg:"Invalid credentials",
-                success:false
+                success:false,
+                
             })
         }
 
@@ -182,7 +183,13 @@ export async function loginController(req,res) {
 
         return res.status(200).json({
             msg:`hey ${user.name} welcome back`,
-            success:true
+            success:true,
+            userData:{
+                    name:user.name,
+                    email:user.email,
+                    role:user.role,
+                    profile_pic:user.profile_pic
+                }
         })
     } catch (error) {
         console.log(`error from loginController ${error}`);

@@ -5,9 +5,9 @@ export async function compressImg(req,res,next) {
 
         
         //if we are converting only one file then we will use req.file.buffer
-        if(req.file || req.file?.buffer){
+        if(req.imageBuffer || req.file || req.file?.buffer){
 
-            const compressedImg = await sharp(req.file.buffer)
+            const compressedImg = await sharp(  req.imageBuffer || req.file.buffer) //here er use image buffer for compression image from pdf
             .resize({width:1080}) //resize to 1080 width
             .toFormat('avif',{quality:90}) //we compress the image quality
             .toBuffer(); 

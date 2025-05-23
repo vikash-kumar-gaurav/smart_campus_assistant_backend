@@ -54,7 +54,8 @@ export async function createClassworkController(req,res) {
 export async function getclassWorkController(req,res) {
     const { department, semester } = req.query
     
-    console.log(department,semester);
+    
+    console.log("department",department,"semester",semester);
     
     if(!department || !semester ){
         return res.status(500).json({

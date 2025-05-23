@@ -58,6 +58,12 @@ export async function seeAttendanceControllerr(req,res) {
     }
 }
 
+//se your own attendance fors student
+export async function StudentAttendenceController(req,res) {
+    const { } = req.body
+    
+}
+
 //mark attendance of bunch of students
 export async function markBunchAttendanceController(req,res) {
     const { subjectId } = req.query

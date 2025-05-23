@@ -6,6 +6,7 @@ async function validateToken(req,res,next) {
     const refreshToken = req.cookies?.refreshToken
     
     
+    
     if(!accessToken && !refreshToken){
         return res.status(404).json({
             msg:"No token found login again",
@@ -14,6 +15,8 @@ async function validateToken(req,res,next) {
     }
 //this is not good there is problem it is not checking refresh token we have to work on it got it
     try {
+        
+        
         if (accessToken) {
         const userData = jwt.verify(accessToken, process.env.SIGNATURE);
         req.userData = userData;
@@ -42,75 +45,49 @@ async function validateToken(req,res,next) {
         });
 
     } catch (error) {
-        console.error(`Error in validateToken middleware: ${error.message}`);
-        return res.status(500).json({
-        msg: "Internal server error, please try again later",
-        success: false,
-        });
+        if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'TOKEN_EXPIRED', message: 'Access token has expired' });
+        } else if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ error: 'INVALID_TOKEN', message: 'Token is invalid' });
+        } else {
+        return res.status(500).json({ error: 'SERVER_ERROR', message: 'Internal error' });
+        }
     }
 }
 
 export default validateToken;
 
+export async function checkToken(req,res) {
+    try {
+        const accessToken = req.cookies?.accessToken
+        const refreshToken = req.cookies?.refreshToken
+        if(!accessToken && !refreshToken){
+            return res.status(409).json({
+                msg:"no Token found Login again",
+                success: false
+            })
+        }
 
-// import jwt from 'jsonwebtoken';
-// import { generate_accessToken } from '../utils/tokenGenerator.js';
+        const data = await jwt.verify(accessToken, process.env.SIGNATURE)
+        if( data ){
+            return res.status(200).json({
+                msg:"everything is good",
+                success:true
+            })
+        }
 
-// async function validateToken(req, res, next) {
-//     const accessToken = req.cookies?.accessToken;
-//     const refreshToken = req.cookies?.refreshToken;
+        
+    } catch (error) {
+        console.log(error);
+        if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'TOKEN_EXPIRED', message: 'Access token has expired' });
+        } else if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ error: 'INVALID_TOKEN', message: 'Token is invalid' });
+        } else {
+        return res.status(500).json({ error: 'SERVER_ERROR', message: 'Internal error' });
+        }
+        
+    }
+}
 
-//     if (!accessToken && !refreshToken) {
-//         return res.status(401).json({
-//             msg: "No token found, please login again",
-//             success: false,
-//         });
-//     }
 
-//     try {
-//         if (accessToken) {
-//             const userData = jwt.verify(accessToken, process.env.SIGNATURE);
-//             req.userData = userData;
-//             return next(); // Proceed to the next middleware or controller
-//         }
-
-//         if (refreshToken) {
-//             const userData = jwt.verify(refreshToken, process.env.SIGNATURE);
-//             req.userData = userData;
-
-//             // Generate a new access token and set it in cookies
-//             const newAccessToken = await generate_accessToken(userData.email);
-//             res.cookie('accessToken', newAccessToken, {
-//                 httpOnly: true,
-//                 secure: process.env.NODE_ENV === 'production',
-//                 sameSite: 'Strict',
-//                 maxAge: 15 * 60 * 1000, // Example: 15 minutes
-//             });
-
-//             return next(); // Proceed to the next middleware or controller
-//         }
-//     } catch (error) {
-//         console.error(`Error in validateToken middleware: ${error.message}`);
-
-//         if (error.name === 'TokenExpiredError') {
-//             return res.status(401).json({
-//                 msg: "Token expired, please login again",
-//                 success: false,
-//             });
-//         }
-
-//         if (error.name === 'JsonWebTokenError') {
-//             return res.status(401).json({
-//                 msg: "Invalid token, please login again",
-//                 success: false,
-//             });
-//         }
-
-//         return res.status(500).json({
-//             msg: "Internal server error, please try again later",
-//             success: false,
-//         });
-//     }
-// }
-
-// export default validateToken;

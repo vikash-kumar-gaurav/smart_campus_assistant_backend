@@ -22,7 +22,7 @@ export async function createpdf(req, res) {
             });
         }
 
-        const expireAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // Corrected expiration time calculation
+        
 
         await prisma.pdf.create({
             data: {
@@ -32,7 +32,7 @@ export async function createpdf(req, res) {
                 Department,
                 Pyq_category: Pyq_category ? Pyq_category : null,
                 posted_by: userId,
-                expireAt: expireAt
+                expireAt: new Date(Date.now())
             }
         });
         return res.status(201).json({
@@ -55,7 +55,7 @@ export async function getpdfnameController(req,res) {
         const pdfs = await prisma.pdf.findMany({
             where: {
                 ...(category && { category }),
-                ...(year && { year }),
+                ...(year && { year:parseInt(year) }),
                 ...(Department && { Department }),
                 ...(category === "Pyqs" && Pyq_category && { Pyq_category})
             },

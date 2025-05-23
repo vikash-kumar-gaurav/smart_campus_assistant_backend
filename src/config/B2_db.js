@@ -47,7 +47,7 @@ export async function uploadPdfs(req,res,next) {
     }
 }
 
-///this function is used to retrive the downloadlink of the pdfs from b2
+///this function is used to retrive the downloadlink of the pdfs from b2 because without prepaid b2 is private and private does not return url as cloudinary do 
 export async function downloadpdf(req,res,fileName) {
     try {
         

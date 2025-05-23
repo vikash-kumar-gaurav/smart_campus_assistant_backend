@@ -5,6 +5,7 @@ export async function createRiddleController(req,res) {
     const { question, options, correct_answer, explanation}   = req.body
     const userId = req.userData.UserMongoId
     const role = req.userData.role
+    console.log("hi from create riddle");
     
     
     try {

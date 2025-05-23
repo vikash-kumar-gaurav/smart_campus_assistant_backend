@@ -33,6 +33,16 @@ export type attendance = $Result.DefaultSelection<Prisma.$attendancePayload>
  * 
  */
 export type pdf = $Result.DefaultSelection<Prisma.$pdfPayload>
+/**
+ * Model Ebook
+ * 
+ */
+export type Ebook = $Result.DefaultSelection<Prisma.$EbookPayload>
+/**
+ * Model Thumbnail
+ * 
+ */
+export type Thumbnail = $Result.DefaultSelection<Prisma.$ThumbnailPayload>
 
 /**
  * Enums
@@ -272,6 +282,26 @@ export class PrismaClient<
     * ```
     */
   get pdf(): Prisma.pdfDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.ebook`: Exposes CRUD operations for the **Ebook** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Ebooks
+    * const ebooks = await prisma.ebook.findMany()
+    * ```
+    */
+  get ebook(): Prisma.EbookDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.thumbnail`: Exposes CRUD operations for the **Thumbnail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Thumbnails
+    * const thumbnails = await prisma.thumbnail.findMany()
+    * ```
+    */
+  get thumbnail(): Prisma.ThumbnailDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -715,7 +745,9 @@ export namespace Prisma {
     user: 'user',
     subject: 'subject',
     attendance: 'attendance',
-    pdf: 'pdf'
+    pdf: 'pdf',
+    Ebook: 'Ebook',
+    Thumbnail: 'Thumbnail'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -734,7 +766,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "subject" | "attendance" | "pdf"
+      modelProps: "user" | "subject" | "attendance" | "pdf" | "ebook" | "thumbnail"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1034,6 +1066,154 @@ export namespace Prisma {
           }
         }
       }
+      Ebook: {
+        payload: Prisma.$EbookPayload<ExtArgs>
+        fields: Prisma.EbookFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EbookFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EbookFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          findFirst: {
+            args: Prisma.EbookFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EbookFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          findMany: {
+            args: Prisma.EbookFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>[]
+          }
+          create: {
+            args: Prisma.EbookCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          createMany: {
+            args: Prisma.EbookCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EbookCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>[]
+          }
+          delete: {
+            args: Prisma.EbookDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          update: {
+            args: Prisma.EbookUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          deleteMany: {
+            args: Prisma.EbookDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EbookUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EbookUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>[]
+          }
+          upsert: {
+            args: Prisma.EbookUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EbookPayload>
+          }
+          aggregate: {
+            args: Prisma.EbookAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEbook>
+          }
+          groupBy: {
+            args: Prisma.EbookGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EbookGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EbookCountArgs<ExtArgs>
+            result: $Utils.Optional<EbookCountAggregateOutputType> | number
+          }
+        }
+      }
+      Thumbnail: {
+        payload: Prisma.$ThumbnailPayload<ExtArgs>
+        fields: Prisma.ThumbnailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ThumbnailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ThumbnailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          findFirst: {
+            args: Prisma.ThumbnailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ThumbnailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          findMany: {
+            args: Prisma.ThumbnailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+          }
+          create: {
+            args: Prisma.ThumbnailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          createMany: {
+            args: Prisma.ThumbnailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ThumbnailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+          }
+          delete: {
+            args: Prisma.ThumbnailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          update: {
+            args: Prisma.ThumbnailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          deleteMany: {
+            args: Prisma.ThumbnailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ThumbnailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ThumbnailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+          }
+          upsert: {
+            args: Prisma.ThumbnailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+          }
+          aggregate: {
+            args: Prisma.ThumbnailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateThumbnail>
+          }
+          groupBy: {
+            args: Prisma.ThumbnailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ThumbnailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ThumbnailCountArgs<ExtArgs>
+            result: $Utils.Optional<ThumbnailCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1122,6 +1302,8 @@ export namespace Prisma {
     subject?: subjectOmit
     attendance?: attendanceOmit
     pdf?: pdfOmit
+    ebook?: EbookOmit
+    thumbnail?: ThumbnailOmit
   }
 
   /* Types for Logging */
@@ -1301,6 +1483,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ThumbnailCountOutputType
+   */
+
+  export type ThumbnailCountOutputType = {
+    ebooks: number
+  }
+
+  export type ThumbnailCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ebooks?: boolean | ThumbnailCountOutputTypeCountEbooksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ThumbnailCountOutputType without action
+   */
+  export type ThumbnailCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ThumbnailCountOutputType
+     */
+    select?: ThumbnailCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ThumbnailCountOutputType without action
+   */
+  export type ThumbnailCountOutputTypeCountEbooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EbookWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1337,6 +1550,8 @@ export namespace Prisma {
     semester: number | null
     department: string | null
     UserMongoId: string | null
+    isPremimum: boolean | null
+    premimum_expire_at: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1350,6 +1565,8 @@ export namespace Prisma {
     semester: number | null
     department: string | null
     UserMongoId: string | null
+    isPremimum: boolean | null
+    premimum_expire_at: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1363,6 +1580,8 @@ export namespace Prisma {
     semester: number
     department: number
     UserMongoId: number
+    isPremimum: number
+    premimum_expire_at: number
     _all: number
   }
 
@@ -1388,6 +1607,8 @@ export namespace Prisma {
     semester?: true
     department?: true
     UserMongoId?: true
+    isPremimum?: true
+    premimum_expire_at?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1401,6 +1622,8 @@ export namespace Prisma {
     semester?: true
     department?: true
     UserMongoId?: true
+    isPremimum?: true
+    premimum_expire_at?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1414,6 +1637,8 @@ export namespace Prisma {
     semester?: true
     department?: true
     UserMongoId?: true
+    isPremimum?: true
+    premimum_expire_at?: true
     _all?: true
   }
 
@@ -1514,6 +1739,8 @@ export namespace Prisma {
     semester: number | null
     department: string | null
     UserMongoId: string
+    isPremimum: boolean
+    premimum_expire_at: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1546,6 +1773,8 @@ export namespace Prisma {
     semester?: boolean
     department?: boolean
     UserMongoId?: boolean
+    isPremimum?: boolean
+    premimum_expire_at?: boolean
     subjects?: boolean | user$subjectsArgs<ExtArgs>
     attendances?: boolean | user$attendancesArgs<ExtArgs>
     attendance?: boolean | user$attendanceArgs<ExtArgs>
@@ -1564,6 +1793,8 @@ export namespace Prisma {
     semester?: boolean
     department?: boolean
     UserMongoId?: boolean
+    isPremimum?: boolean
+    premimum_expire_at?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1577,6 +1808,8 @@ export namespace Prisma {
     semester?: boolean
     department?: boolean
     UserMongoId?: boolean
+    isPremimum?: boolean
+    premimum_expire_at?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectScalar = {
@@ -1590,9 +1823,11 @@ export namespace Prisma {
     semester?: boolean
     department?: boolean
     UserMongoId?: boolean
+    isPremimum?: boolean
+    premimum_expire_at?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "profile_pic" | "email" | "password" | "role" | "is_active" | "semester" | "department" | "UserMongoId", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "profile_pic" | "email" | "password" | "role" | "is_active" | "semester" | "department" | "UserMongoId" | "isPremimum" | "premimum_expire_at", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subjects?: boolean | user$subjectsArgs<ExtArgs>
     attendances?: boolean | user$attendancesArgs<ExtArgs>
@@ -1622,6 +1857,8 @@ export namespace Prisma {
       semester: number | null
       department: string | null
       UserMongoId: string
+      isPremimum: boolean
+      premimum_expire_at: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2059,6 +2296,8 @@ export namespace Prisma {
     readonly semester: FieldRef<"user", 'Int'>
     readonly department: FieldRef<"user", 'String'>
     readonly UserMongoId: FieldRef<"user", 'String'>
+    readonly isPremimum: FieldRef<"user", 'Boolean'>
+    readonly premimum_expire_at: FieldRef<"user", 'DateTime'>
   }
     
 
@@ -6003,6 +6242,2258 @@ export namespace Prisma {
 
 
   /**
+   * Model Ebook
+   */
+
+  export type AggregateEbook = {
+    _count: EbookCountAggregateOutputType | null
+    _avg: EbookAvgAggregateOutputType | null
+    _sum: EbookSumAggregateOutputType | null
+    _min: EbookMinAggregateOutputType | null
+    _max: EbookMaxAggregateOutputType | null
+  }
+
+  export type EbookAvgAggregateOutputType = {
+    id: number | null
+    ThumbnailId: number | null
+  }
+
+  export type EbookSumAggregateOutputType = {
+    id: number | null
+    ThumbnailId: number | null
+  }
+
+  export type EbookMinAggregateOutputType = {
+    id: number | null
+    book_name: string | null
+    writer: string | null
+    genre: string | null
+    description: string | null
+    pdf_name: string | null
+    pdf_url: string | null
+    pdf_url_createdAt: Date | null
+    ThumbnailId: number | null
+    createdAt: Date | null
+  }
+
+  export type EbookMaxAggregateOutputType = {
+    id: number | null
+    book_name: string | null
+    writer: string | null
+    genre: string | null
+    description: string | null
+    pdf_name: string | null
+    pdf_url: string | null
+    pdf_url_createdAt: Date | null
+    ThumbnailId: number | null
+    createdAt: Date | null
+  }
+
+  export type EbookCountAggregateOutputType = {
+    id: number
+    book_name: number
+    writer: number
+    genre: number
+    description: number
+    pdf_name: number
+    pdf_url: number
+    pdf_url_createdAt: number
+    ThumbnailId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type EbookAvgAggregateInputType = {
+    id?: true
+    ThumbnailId?: true
+  }
+
+  export type EbookSumAggregateInputType = {
+    id?: true
+    ThumbnailId?: true
+  }
+
+  export type EbookMinAggregateInputType = {
+    id?: true
+    book_name?: true
+    writer?: true
+    genre?: true
+    description?: true
+    pdf_name?: true
+    pdf_url?: true
+    pdf_url_createdAt?: true
+    ThumbnailId?: true
+    createdAt?: true
+  }
+
+  export type EbookMaxAggregateInputType = {
+    id?: true
+    book_name?: true
+    writer?: true
+    genre?: true
+    description?: true
+    pdf_name?: true
+    pdf_url?: true
+    pdf_url_createdAt?: true
+    ThumbnailId?: true
+    createdAt?: true
+  }
+
+  export type EbookCountAggregateInputType = {
+    id?: true
+    book_name?: true
+    writer?: true
+    genre?: true
+    description?: true
+    pdf_name?: true
+    pdf_url?: true
+    pdf_url_createdAt?: true
+    ThumbnailId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type EbookAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Ebook to aggregate.
+     */
+    where?: EbookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ebooks to fetch.
+     */
+    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EbookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ebooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ebooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Ebooks
+    **/
+    _count?: true | EbookCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EbookAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EbookSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EbookMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EbookMaxAggregateInputType
+  }
+
+  export type GetEbookAggregateType<T extends EbookAggregateArgs> = {
+        [P in keyof T & keyof AggregateEbook]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEbook[P]>
+      : GetScalarType<T[P], AggregateEbook[P]>
+  }
+
+
+
+
+  export type EbookGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EbookWhereInput
+    orderBy?: EbookOrderByWithAggregationInput | EbookOrderByWithAggregationInput[]
+    by: EbookScalarFieldEnum[] | EbookScalarFieldEnum
+    having?: EbookScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EbookCountAggregateInputType | true
+    _avg?: EbookAvgAggregateInputType
+    _sum?: EbookSumAggregateInputType
+    _min?: EbookMinAggregateInputType
+    _max?: EbookMaxAggregateInputType
+  }
+
+  export type EbookGroupByOutputType = {
+    id: number
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url: string | null
+    pdf_url_createdAt: Date
+    ThumbnailId: number
+    createdAt: Date
+    _count: EbookCountAggregateOutputType | null
+    _avg: EbookAvgAggregateOutputType | null
+    _sum: EbookSumAggregateOutputType | null
+    _min: EbookMinAggregateOutputType | null
+    _max: EbookMaxAggregateOutputType | null
+  }
+
+  type GetEbookGroupByPayload<T extends EbookGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EbookGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EbookGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EbookGroupByOutputType[P]>
+            : GetScalarType<T[P], EbookGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EbookSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    book_name?: boolean
+    writer?: boolean
+    genre?: boolean
+    description?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    pdf_url_createdAt?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ebook"]>
+
+  export type EbookSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    book_name?: boolean
+    writer?: boolean
+    genre?: boolean
+    description?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    pdf_url_createdAt?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ebook"]>
+
+  export type EbookSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    book_name?: boolean
+    writer?: boolean
+    genre?: boolean
+    description?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    pdf_url_createdAt?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["ebook"]>
+
+  export type EbookSelectScalar = {
+    id?: boolean
+    book_name?: boolean
+    writer?: boolean
+    genre?: boolean
+    description?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    pdf_url_createdAt?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+  }
+
+  export type EbookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "book_name" | "writer" | "genre" | "description" | "pdf_name" | "pdf_url" | "pdf_url_createdAt" | "ThumbnailId" | "createdAt", ExtArgs["result"]["ebook"]>
+  export type EbookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }
+  export type EbookIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }
+  export type EbookIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
+  }
+
+  export type $EbookPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Ebook"
+    objects: {
+      pdf_thumbnail: Prisma.$ThumbnailPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      book_name: string
+      writer: string
+      genre: string
+      description: string
+      pdf_name: string
+      pdf_url: string | null
+      pdf_url_createdAt: Date
+      ThumbnailId: number
+      createdAt: Date
+    }, ExtArgs["result"]["ebook"]>
+    composites: {}
+  }
+
+  type EbookGetPayload<S extends boolean | null | undefined | EbookDefaultArgs> = $Result.GetResult<Prisma.$EbookPayload, S>
+
+  type EbookCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EbookFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EbookCountAggregateInputType | true
+    }
+
+  export interface EbookDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Ebook'], meta: { name: 'Ebook' } }
+    /**
+     * Find zero or one Ebook that matches the filter.
+     * @param {EbookFindUniqueArgs} args - Arguments to find a Ebook
+     * @example
+     * // Get one Ebook
+     * const ebook = await prisma.ebook.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EbookFindUniqueArgs>(args: SelectSubset<T, EbookFindUniqueArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Ebook that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EbookFindUniqueOrThrowArgs} args - Arguments to find a Ebook
+     * @example
+     * // Get one Ebook
+     * const ebook = await prisma.ebook.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EbookFindUniqueOrThrowArgs>(args: SelectSubset<T, EbookFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Ebook that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookFindFirstArgs} args - Arguments to find a Ebook
+     * @example
+     * // Get one Ebook
+     * const ebook = await prisma.ebook.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EbookFindFirstArgs>(args?: SelectSubset<T, EbookFindFirstArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Ebook that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookFindFirstOrThrowArgs} args - Arguments to find a Ebook
+     * @example
+     * // Get one Ebook
+     * const ebook = await prisma.ebook.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EbookFindFirstOrThrowArgs>(args?: SelectSubset<T, EbookFindFirstOrThrowArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Ebooks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Ebooks
+     * const ebooks = await prisma.ebook.findMany()
+     * 
+     * // Get first 10 Ebooks
+     * const ebooks = await prisma.ebook.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const ebookWithIdOnly = await prisma.ebook.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EbookFindManyArgs>(args?: SelectSubset<T, EbookFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Ebook.
+     * @param {EbookCreateArgs} args - Arguments to create a Ebook.
+     * @example
+     * // Create one Ebook
+     * const Ebook = await prisma.ebook.create({
+     *   data: {
+     *     // ... data to create a Ebook
+     *   }
+     * })
+     * 
+     */
+    create<T extends EbookCreateArgs>(args: SelectSubset<T, EbookCreateArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Ebooks.
+     * @param {EbookCreateManyArgs} args - Arguments to create many Ebooks.
+     * @example
+     * // Create many Ebooks
+     * const ebook = await prisma.ebook.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EbookCreateManyArgs>(args?: SelectSubset<T, EbookCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Ebooks and returns the data saved in the database.
+     * @param {EbookCreateManyAndReturnArgs} args - Arguments to create many Ebooks.
+     * @example
+     * // Create many Ebooks
+     * const ebook = await prisma.ebook.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Ebooks and only return the `id`
+     * const ebookWithIdOnly = await prisma.ebook.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EbookCreateManyAndReturnArgs>(args?: SelectSubset<T, EbookCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Ebook.
+     * @param {EbookDeleteArgs} args - Arguments to delete one Ebook.
+     * @example
+     * // Delete one Ebook
+     * const Ebook = await prisma.ebook.delete({
+     *   where: {
+     *     // ... filter to delete one Ebook
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EbookDeleteArgs>(args: SelectSubset<T, EbookDeleteArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Ebook.
+     * @param {EbookUpdateArgs} args - Arguments to update one Ebook.
+     * @example
+     * // Update one Ebook
+     * const ebook = await prisma.ebook.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EbookUpdateArgs>(args: SelectSubset<T, EbookUpdateArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Ebooks.
+     * @param {EbookDeleteManyArgs} args - Arguments to filter Ebooks to delete.
+     * @example
+     * // Delete a few Ebooks
+     * const { count } = await prisma.ebook.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EbookDeleteManyArgs>(args?: SelectSubset<T, EbookDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ebooks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Ebooks
+     * const ebook = await prisma.ebook.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EbookUpdateManyArgs>(args: SelectSubset<T, EbookUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Ebooks and returns the data updated in the database.
+     * @param {EbookUpdateManyAndReturnArgs} args - Arguments to update many Ebooks.
+     * @example
+     * // Update many Ebooks
+     * const ebook = await prisma.ebook.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Ebooks and only return the `id`
+     * const ebookWithIdOnly = await prisma.ebook.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EbookUpdateManyAndReturnArgs>(args: SelectSubset<T, EbookUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Ebook.
+     * @param {EbookUpsertArgs} args - Arguments to update or create a Ebook.
+     * @example
+     * // Update or create a Ebook
+     * const ebook = await prisma.ebook.upsert({
+     *   create: {
+     *     // ... data to create a Ebook
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Ebook we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EbookUpsertArgs>(args: SelectSubset<T, EbookUpsertArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Ebooks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookCountArgs} args - Arguments to filter Ebooks to count.
+     * @example
+     * // Count the number of Ebooks
+     * const count = await prisma.ebook.count({
+     *   where: {
+     *     // ... the filter for the Ebooks we want to count
+     *   }
+     * })
+    **/
+    count<T extends EbookCountArgs>(
+      args?: Subset<T, EbookCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EbookCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Ebook.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EbookAggregateArgs>(args: Subset<T, EbookAggregateArgs>): Prisma.PrismaPromise<GetEbookAggregateType<T>>
+
+    /**
+     * Group by Ebook.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EbookGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EbookGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EbookGroupByArgs['orderBy'] }
+        : { orderBy?: EbookGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EbookGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEbookGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Ebook model
+   */
+  readonly fields: EbookFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Ebook.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EbookClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    pdf_thumbnail<T extends ThumbnailDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ThumbnailDefaultArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Ebook model
+   */
+  interface EbookFieldRefs {
+    readonly id: FieldRef<"Ebook", 'Int'>
+    readonly book_name: FieldRef<"Ebook", 'String'>
+    readonly writer: FieldRef<"Ebook", 'String'>
+    readonly genre: FieldRef<"Ebook", 'String'>
+    readonly description: FieldRef<"Ebook", 'String'>
+    readonly pdf_name: FieldRef<"Ebook", 'String'>
+    readonly pdf_url: FieldRef<"Ebook", 'String'>
+    readonly pdf_url_createdAt: FieldRef<"Ebook", 'DateTime'>
+    readonly ThumbnailId: FieldRef<"Ebook", 'Int'>
+    readonly createdAt: FieldRef<"Ebook", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Ebook findUnique
+   */
+  export type EbookFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter, which Ebook to fetch.
+     */
+    where: EbookWhereUniqueInput
+  }
+
+  /**
+   * Ebook findUniqueOrThrow
+   */
+  export type EbookFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter, which Ebook to fetch.
+     */
+    where: EbookWhereUniqueInput
+  }
+
+  /**
+   * Ebook findFirst
+   */
+  export type EbookFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter, which Ebook to fetch.
+     */
+    where?: EbookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ebooks to fetch.
+     */
+    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Ebooks.
+     */
+    cursor?: EbookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ebooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ebooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ebooks.
+     */
+    distinct?: EbookScalarFieldEnum | EbookScalarFieldEnum[]
+  }
+
+  /**
+   * Ebook findFirstOrThrow
+   */
+  export type EbookFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter, which Ebook to fetch.
+     */
+    where?: EbookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ebooks to fetch.
+     */
+    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Ebooks.
+     */
+    cursor?: EbookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ebooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ebooks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Ebooks.
+     */
+    distinct?: EbookScalarFieldEnum | EbookScalarFieldEnum[]
+  }
+
+  /**
+   * Ebook findMany
+   */
+  export type EbookFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter, which Ebooks to fetch.
+     */
+    where?: EbookWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Ebooks to fetch.
+     */
+    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Ebooks.
+     */
+    cursor?: EbookWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Ebooks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Ebooks.
+     */
+    skip?: number
+    distinct?: EbookScalarFieldEnum | EbookScalarFieldEnum[]
+  }
+
+  /**
+   * Ebook create
+   */
+  export type EbookCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Ebook.
+     */
+    data: XOR<EbookCreateInput, EbookUncheckedCreateInput>
+  }
+
+  /**
+   * Ebook createMany
+   */
+  export type EbookCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Ebooks.
+     */
+    data: EbookCreateManyInput | EbookCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Ebook createManyAndReturn
+   */
+  export type EbookCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * The data used to create many Ebooks.
+     */
+    data: EbookCreateManyInput | EbookCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Ebook update
+   */
+  export type EbookUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Ebook.
+     */
+    data: XOR<EbookUpdateInput, EbookUncheckedUpdateInput>
+    /**
+     * Choose, which Ebook to update.
+     */
+    where: EbookWhereUniqueInput
+  }
+
+  /**
+   * Ebook updateMany
+   */
+  export type EbookUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Ebooks.
+     */
+    data: XOR<EbookUpdateManyMutationInput, EbookUncheckedUpdateManyInput>
+    /**
+     * Filter which Ebooks to update
+     */
+    where?: EbookWhereInput
+    /**
+     * Limit how many Ebooks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Ebook updateManyAndReturn
+   */
+  export type EbookUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * The data used to update Ebooks.
+     */
+    data: XOR<EbookUpdateManyMutationInput, EbookUncheckedUpdateManyInput>
+    /**
+     * Filter which Ebooks to update
+     */
+    where?: EbookWhereInput
+    /**
+     * Limit how many Ebooks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Ebook upsert
+   */
+  export type EbookUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Ebook to update in case it exists.
+     */
+    where: EbookWhereUniqueInput
+    /**
+     * In case the Ebook found by the `where` argument doesn't exist, create a new Ebook with this data.
+     */
+    create: XOR<EbookCreateInput, EbookUncheckedCreateInput>
+    /**
+     * In case the Ebook was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EbookUpdateInput, EbookUncheckedUpdateInput>
+  }
+
+  /**
+   * Ebook delete
+   */
+  export type EbookDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    /**
+     * Filter which Ebook to delete.
+     */
+    where: EbookWhereUniqueInput
+  }
+
+  /**
+   * Ebook deleteMany
+   */
+  export type EbookDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Ebooks to delete
+     */
+    where?: EbookWhereInput
+    /**
+     * Limit how many Ebooks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Ebook without action
+   */
+  export type EbookDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Thumbnail
+   */
+
+  export type AggregateThumbnail = {
+    _count: ThumbnailCountAggregateOutputType | null
+    _avg: ThumbnailAvgAggregateOutputType | null
+    _sum: ThumbnailSumAggregateOutputType | null
+    _min: ThumbnailMinAggregateOutputType | null
+    _max: ThumbnailMaxAggregateOutputType | null
+  }
+
+  export type ThumbnailAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ThumbnailSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ThumbnailMinAggregateOutputType = {
+    id: number | null
+    image_url: string | null
+    public_id: string | null
+    createdAt: Date | null
+  }
+
+  export type ThumbnailMaxAggregateOutputType = {
+    id: number | null
+    image_url: string | null
+    public_id: string | null
+    createdAt: Date | null
+  }
+
+  export type ThumbnailCountAggregateOutputType = {
+    id: number
+    image_url: number
+    public_id: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ThumbnailAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ThumbnailSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ThumbnailMinAggregateInputType = {
+    id?: true
+    image_url?: true
+    public_id?: true
+    createdAt?: true
+  }
+
+  export type ThumbnailMaxAggregateInputType = {
+    id?: true
+    image_url?: true
+    public_id?: true
+    createdAt?: true
+  }
+
+  export type ThumbnailCountAggregateInputType = {
+    id?: true
+    image_url?: true
+    public_id?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ThumbnailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Thumbnail to aggregate.
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Thumbnails to fetch.
+     */
+    orderBy?: ThumbnailOrderByWithRelationInput | ThumbnailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ThumbnailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Thumbnails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Thumbnails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Thumbnails
+    **/
+    _count?: true | ThumbnailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ThumbnailAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ThumbnailSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ThumbnailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ThumbnailMaxAggregateInputType
+  }
+
+  export type GetThumbnailAggregateType<T extends ThumbnailAggregateArgs> = {
+        [P in keyof T & keyof AggregateThumbnail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateThumbnail[P]>
+      : GetScalarType<T[P], AggregateThumbnail[P]>
+  }
+
+
+
+
+  export type ThumbnailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ThumbnailWhereInput
+    orderBy?: ThumbnailOrderByWithAggregationInput | ThumbnailOrderByWithAggregationInput[]
+    by: ThumbnailScalarFieldEnum[] | ThumbnailScalarFieldEnum
+    having?: ThumbnailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ThumbnailCountAggregateInputType | true
+    _avg?: ThumbnailAvgAggregateInputType
+    _sum?: ThumbnailSumAggregateInputType
+    _min?: ThumbnailMinAggregateInputType
+    _max?: ThumbnailMaxAggregateInputType
+  }
+
+  export type ThumbnailGroupByOutputType = {
+    id: number
+    image_url: string
+    public_id: string
+    createdAt: Date
+    _count: ThumbnailCountAggregateOutputType | null
+    _avg: ThumbnailAvgAggregateOutputType | null
+    _sum: ThumbnailSumAggregateOutputType | null
+    _min: ThumbnailMinAggregateOutputType | null
+    _max: ThumbnailMaxAggregateOutputType | null
+  }
+
+  type GetThumbnailGroupByPayload<T extends ThumbnailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ThumbnailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ThumbnailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ThumbnailGroupByOutputType[P]>
+            : GetScalarType<T[P], ThumbnailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ThumbnailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image_url?: boolean
+    public_id?: boolean
+    createdAt?: boolean
+    ebooks?: boolean | Thumbnail$ebooksArgs<ExtArgs>
+    _count?: boolean | ThumbnailCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["thumbnail"]>
+
+  export type ThumbnailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image_url?: boolean
+    public_id?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["thumbnail"]>
+
+  export type ThumbnailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image_url?: boolean
+    public_id?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["thumbnail"]>
+
+  export type ThumbnailSelectScalar = {
+    id?: boolean
+    image_url?: boolean
+    public_id?: boolean
+    createdAt?: boolean
+  }
+
+  export type ThumbnailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image_url" | "public_id" | "createdAt", ExtArgs["result"]["thumbnail"]>
+  export type ThumbnailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ebooks?: boolean | Thumbnail$ebooksArgs<ExtArgs>
+    _count?: boolean | ThumbnailCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ThumbnailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ThumbnailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ThumbnailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Thumbnail"
+    objects: {
+      ebooks: Prisma.$EbookPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image_url: string
+      public_id: string
+      createdAt: Date
+    }, ExtArgs["result"]["thumbnail"]>
+    composites: {}
+  }
+
+  type ThumbnailGetPayload<S extends boolean | null | undefined | ThumbnailDefaultArgs> = $Result.GetResult<Prisma.$ThumbnailPayload, S>
+
+  type ThumbnailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ThumbnailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ThumbnailCountAggregateInputType | true
+    }
+
+  export interface ThumbnailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Thumbnail'], meta: { name: 'Thumbnail' } }
+    /**
+     * Find zero or one Thumbnail that matches the filter.
+     * @param {ThumbnailFindUniqueArgs} args - Arguments to find a Thumbnail
+     * @example
+     * // Get one Thumbnail
+     * const thumbnail = await prisma.thumbnail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ThumbnailFindUniqueArgs>(args: SelectSubset<T, ThumbnailFindUniqueArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Thumbnail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ThumbnailFindUniqueOrThrowArgs} args - Arguments to find a Thumbnail
+     * @example
+     * // Get one Thumbnail
+     * const thumbnail = await prisma.thumbnail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ThumbnailFindUniqueOrThrowArgs>(args: SelectSubset<T, ThumbnailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Thumbnail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailFindFirstArgs} args - Arguments to find a Thumbnail
+     * @example
+     * // Get one Thumbnail
+     * const thumbnail = await prisma.thumbnail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ThumbnailFindFirstArgs>(args?: SelectSubset<T, ThumbnailFindFirstArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Thumbnail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailFindFirstOrThrowArgs} args - Arguments to find a Thumbnail
+     * @example
+     * // Get one Thumbnail
+     * const thumbnail = await prisma.thumbnail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ThumbnailFindFirstOrThrowArgs>(args?: SelectSubset<T, ThumbnailFindFirstOrThrowArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Thumbnails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Thumbnails
+     * const thumbnails = await prisma.thumbnail.findMany()
+     * 
+     * // Get first 10 Thumbnails
+     * const thumbnails = await prisma.thumbnail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const thumbnailWithIdOnly = await prisma.thumbnail.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ThumbnailFindManyArgs>(args?: SelectSubset<T, ThumbnailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Thumbnail.
+     * @param {ThumbnailCreateArgs} args - Arguments to create a Thumbnail.
+     * @example
+     * // Create one Thumbnail
+     * const Thumbnail = await prisma.thumbnail.create({
+     *   data: {
+     *     // ... data to create a Thumbnail
+     *   }
+     * })
+     * 
+     */
+    create<T extends ThumbnailCreateArgs>(args: SelectSubset<T, ThumbnailCreateArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Thumbnails.
+     * @param {ThumbnailCreateManyArgs} args - Arguments to create many Thumbnails.
+     * @example
+     * // Create many Thumbnails
+     * const thumbnail = await prisma.thumbnail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ThumbnailCreateManyArgs>(args?: SelectSubset<T, ThumbnailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Thumbnails and returns the data saved in the database.
+     * @param {ThumbnailCreateManyAndReturnArgs} args - Arguments to create many Thumbnails.
+     * @example
+     * // Create many Thumbnails
+     * const thumbnail = await prisma.thumbnail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Thumbnails and only return the `id`
+     * const thumbnailWithIdOnly = await prisma.thumbnail.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ThumbnailCreateManyAndReturnArgs>(args?: SelectSubset<T, ThumbnailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Thumbnail.
+     * @param {ThumbnailDeleteArgs} args - Arguments to delete one Thumbnail.
+     * @example
+     * // Delete one Thumbnail
+     * const Thumbnail = await prisma.thumbnail.delete({
+     *   where: {
+     *     // ... filter to delete one Thumbnail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ThumbnailDeleteArgs>(args: SelectSubset<T, ThumbnailDeleteArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Thumbnail.
+     * @param {ThumbnailUpdateArgs} args - Arguments to update one Thumbnail.
+     * @example
+     * // Update one Thumbnail
+     * const thumbnail = await prisma.thumbnail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ThumbnailUpdateArgs>(args: SelectSubset<T, ThumbnailUpdateArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Thumbnails.
+     * @param {ThumbnailDeleteManyArgs} args - Arguments to filter Thumbnails to delete.
+     * @example
+     * // Delete a few Thumbnails
+     * const { count } = await prisma.thumbnail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ThumbnailDeleteManyArgs>(args?: SelectSubset<T, ThumbnailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Thumbnails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Thumbnails
+     * const thumbnail = await prisma.thumbnail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ThumbnailUpdateManyArgs>(args: SelectSubset<T, ThumbnailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Thumbnails and returns the data updated in the database.
+     * @param {ThumbnailUpdateManyAndReturnArgs} args - Arguments to update many Thumbnails.
+     * @example
+     * // Update many Thumbnails
+     * const thumbnail = await prisma.thumbnail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Thumbnails and only return the `id`
+     * const thumbnailWithIdOnly = await prisma.thumbnail.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ThumbnailUpdateManyAndReturnArgs>(args: SelectSubset<T, ThumbnailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Thumbnail.
+     * @param {ThumbnailUpsertArgs} args - Arguments to update or create a Thumbnail.
+     * @example
+     * // Update or create a Thumbnail
+     * const thumbnail = await prisma.thumbnail.upsert({
+     *   create: {
+     *     // ... data to create a Thumbnail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Thumbnail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ThumbnailUpsertArgs>(args: SelectSubset<T, ThumbnailUpsertArgs<ExtArgs>>): Prisma__ThumbnailClient<$Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Thumbnails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailCountArgs} args - Arguments to filter Thumbnails to count.
+     * @example
+     * // Count the number of Thumbnails
+     * const count = await prisma.thumbnail.count({
+     *   where: {
+     *     // ... the filter for the Thumbnails we want to count
+     *   }
+     * })
+    **/
+    count<T extends ThumbnailCountArgs>(
+      args?: Subset<T, ThumbnailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ThumbnailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Thumbnail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ThumbnailAggregateArgs>(args: Subset<T, ThumbnailAggregateArgs>): Prisma.PrismaPromise<GetThumbnailAggregateType<T>>
+
+    /**
+     * Group by Thumbnail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ThumbnailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ThumbnailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ThumbnailGroupByArgs['orderBy'] }
+        : { orderBy?: ThumbnailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ThumbnailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetThumbnailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Thumbnail model
+   */
+  readonly fields: ThumbnailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Thumbnail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ThumbnailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ebooks<T extends Thumbnail$ebooksArgs<ExtArgs> = {}>(args?: Subset<T, Thumbnail$ebooksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Thumbnail model
+   */
+  interface ThumbnailFieldRefs {
+    readonly id: FieldRef<"Thumbnail", 'Int'>
+    readonly image_url: FieldRef<"Thumbnail", 'String'>
+    readonly public_id: FieldRef<"Thumbnail", 'String'>
+    readonly createdAt: FieldRef<"Thumbnail", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Thumbnail findUnique
+   */
+  export type ThumbnailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter, which Thumbnail to fetch.
+     */
+    where: ThumbnailWhereUniqueInput
+  }
+
+  /**
+   * Thumbnail findUniqueOrThrow
+   */
+  export type ThumbnailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter, which Thumbnail to fetch.
+     */
+    where: ThumbnailWhereUniqueInput
+  }
+
+  /**
+   * Thumbnail findFirst
+   */
+  export type ThumbnailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter, which Thumbnail to fetch.
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Thumbnails to fetch.
+     */
+    orderBy?: ThumbnailOrderByWithRelationInput | ThumbnailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Thumbnails.
+     */
+    cursor?: ThumbnailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Thumbnails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Thumbnails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Thumbnails.
+     */
+    distinct?: ThumbnailScalarFieldEnum | ThumbnailScalarFieldEnum[]
+  }
+
+  /**
+   * Thumbnail findFirstOrThrow
+   */
+  export type ThumbnailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter, which Thumbnail to fetch.
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Thumbnails to fetch.
+     */
+    orderBy?: ThumbnailOrderByWithRelationInput | ThumbnailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Thumbnails.
+     */
+    cursor?: ThumbnailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Thumbnails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Thumbnails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Thumbnails.
+     */
+    distinct?: ThumbnailScalarFieldEnum | ThumbnailScalarFieldEnum[]
+  }
+
+  /**
+   * Thumbnail findMany
+   */
+  export type ThumbnailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter, which Thumbnails to fetch.
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Thumbnails to fetch.
+     */
+    orderBy?: ThumbnailOrderByWithRelationInput | ThumbnailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Thumbnails.
+     */
+    cursor?: ThumbnailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Thumbnails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Thumbnails.
+     */
+    skip?: number
+    distinct?: ThumbnailScalarFieldEnum | ThumbnailScalarFieldEnum[]
+  }
+
+  /**
+   * Thumbnail create
+   */
+  export type ThumbnailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Thumbnail.
+     */
+    data: XOR<ThumbnailCreateInput, ThumbnailUncheckedCreateInput>
+  }
+
+  /**
+   * Thumbnail createMany
+   */
+  export type ThumbnailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Thumbnails.
+     */
+    data: ThumbnailCreateManyInput | ThumbnailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Thumbnail createManyAndReturn
+   */
+  export type ThumbnailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * The data used to create many Thumbnails.
+     */
+    data: ThumbnailCreateManyInput | ThumbnailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Thumbnail update
+   */
+  export type ThumbnailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Thumbnail.
+     */
+    data: XOR<ThumbnailUpdateInput, ThumbnailUncheckedUpdateInput>
+    /**
+     * Choose, which Thumbnail to update.
+     */
+    where: ThumbnailWhereUniqueInput
+  }
+
+  /**
+   * Thumbnail updateMany
+   */
+  export type ThumbnailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Thumbnails.
+     */
+    data: XOR<ThumbnailUpdateManyMutationInput, ThumbnailUncheckedUpdateManyInput>
+    /**
+     * Filter which Thumbnails to update
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * Limit how many Thumbnails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Thumbnail updateManyAndReturn
+   */
+  export type ThumbnailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * The data used to update Thumbnails.
+     */
+    data: XOR<ThumbnailUpdateManyMutationInput, ThumbnailUncheckedUpdateManyInput>
+    /**
+     * Filter which Thumbnails to update
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * Limit how many Thumbnails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Thumbnail upsert
+   */
+  export type ThumbnailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Thumbnail to update in case it exists.
+     */
+    where: ThumbnailWhereUniqueInput
+    /**
+     * In case the Thumbnail found by the `where` argument doesn't exist, create a new Thumbnail with this data.
+     */
+    create: XOR<ThumbnailCreateInput, ThumbnailUncheckedCreateInput>
+    /**
+     * In case the Thumbnail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ThumbnailUpdateInput, ThumbnailUncheckedUpdateInput>
+  }
+
+  /**
+   * Thumbnail delete
+   */
+  export type ThumbnailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+    /**
+     * Filter which Thumbnail to delete.
+     */
+    where: ThumbnailWhereUniqueInput
+  }
+
+  /**
+   * Thumbnail deleteMany
+   */
+  export type ThumbnailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Thumbnails to delete
+     */
+    where?: ThumbnailWhereInput
+    /**
+     * Limit how many Thumbnails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Thumbnail.ebooks
+   */
+  export type Thumbnail$ebooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Ebook
+     */
+    select?: EbookSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Ebook
+     */
+    omit?: EbookOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EbookInclude<ExtArgs> | null
+    where?: EbookWhereInput
+    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
+    cursor?: EbookWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EbookScalarFieldEnum | EbookScalarFieldEnum[]
+  }
+
+  /**
+   * Thumbnail without action
+   */
+  export type ThumbnailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Thumbnail
+     */
+    select?: ThumbnailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Thumbnail
+     */
+    omit?: ThumbnailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ThumbnailInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6026,7 +8517,9 @@ export namespace Prisma {
     is_active: 'is_active',
     semester: 'semester',
     department: 'department',
-    UserMongoId: 'UserMongoId'
+    UserMongoId: 'UserMongoId',
+    isPremimum: 'isPremimum',
+    premimum_expire_at: 'premimum_expire_at'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -6070,6 +8563,32 @@ export namespace Prisma {
   };
 
   export type PdfScalarFieldEnum = (typeof PdfScalarFieldEnum)[keyof typeof PdfScalarFieldEnum]
+
+
+  export const EbookScalarFieldEnum: {
+    id: 'id',
+    book_name: 'book_name',
+    writer: 'writer',
+    genre: 'genre',
+    description: 'description',
+    pdf_name: 'pdf_name',
+    pdf_url: 'pdf_url',
+    pdf_url_createdAt: 'pdf_url_createdAt',
+    ThumbnailId: 'ThumbnailId',
+    createdAt: 'createdAt'
+  };
+
+  export type EbookScalarFieldEnum = (typeof EbookScalarFieldEnum)[keyof typeof EbookScalarFieldEnum]
+
+
+  export const ThumbnailScalarFieldEnum: {
+    id: 'id',
+    image_url: 'image_url',
+    public_id: 'public_id',
+    createdAt: 'createdAt'
+  };
+
+  export type ThumbnailScalarFieldEnum = (typeof ThumbnailScalarFieldEnum)[keyof typeof ThumbnailScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6251,6 +8770,8 @@ export namespace Prisma {
     semester?: IntNullableFilter<"user"> | number | null
     department?: StringNullableFilter<"user"> | string | null
     UserMongoId?: StringFilter<"user"> | string
+    isPremimum?: BoolFilter<"user"> | boolean
+    premimum_expire_at?: DateTimeNullableFilter<"user"> | Date | string | null
     subjects?: SubjectListRelationFilter
     attendances?: AttendanceListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -6268,6 +8789,8 @@ export namespace Prisma {
     semester?: SortOrderInput | SortOrder
     department?: SortOrderInput | SortOrder
     UserMongoId?: SortOrder
+    isPremimum?: SortOrder
+    premimum_expire_at?: SortOrderInput | SortOrder
     subjects?: subjectOrderByRelationAggregateInput
     attendances?: attendanceOrderByRelationAggregateInput
     attendance?: attendanceOrderByRelationAggregateInput
@@ -6288,6 +8811,8 @@ export namespace Prisma {
     semester?: IntNullableFilter<"user"> | number | null
     department?: StringNullableFilter<"user"> | string | null
     UserMongoId?: StringFilter<"user"> | string
+    isPremimum?: BoolFilter<"user"> | boolean
+    premimum_expire_at?: DateTimeNullableFilter<"user"> | Date | string | null
     subjects?: SubjectListRelationFilter
     attendances?: AttendanceListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -6305,6 +8830,8 @@ export namespace Prisma {
     semester?: SortOrderInput | SortOrder
     department?: SortOrderInput | SortOrder
     UserMongoId?: SortOrder
+    isPremimum?: SortOrder
+    premimum_expire_at?: SortOrderInput | SortOrder
     _count?: userCountOrderByAggregateInput
     _avg?: userAvgOrderByAggregateInput
     _max?: userMaxOrderByAggregateInput
@@ -6326,6 +8853,8 @@ export namespace Prisma {
     semester?: IntNullableWithAggregatesFilter<"user"> | number | null
     department?: StringNullableWithAggregatesFilter<"user"> | string | null
     UserMongoId?: StringWithAggregatesFilter<"user"> | string
+    isPremimum?: BoolWithAggregatesFilter<"user"> | boolean
+    premimum_expire_at?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
   }
 
   export type subjectWhereInput = {
@@ -6543,6 +9072,140 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"pdf"> | Date | string
   }
 
+  export type EbookWhereInput = {
+    AND?: EbookWhereInput | EbookWhereInput[]
+    OR?: EbookWhereInput[]
+    NOT?: EbookWhereInput | EbookWhereInput[]
+    id?: IntFilter<"Ebook"> | number
+    book_name?: StringFilter<"Ebook"> | string
+    writer?: StringFilter<"Ebook"> | string
+    genre?: StringFilter<"Ebook"> | string
+    description?: StringFilter<"Ebook"> | string
+    pdf_name?: StringFilter<"Ebook"> | string
+    pdf_url?: StringNullableFilter<"Ebook"> | string | null
+    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    ThumbnailId?: IntFilter<"Ebook"> | number
+    createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    pdf_thumbnail?: XOR<ThumbnailScalarRelationFilter, ThumbnailWhereInput>
+  }
+
+  export type EbookOrderByWithRelationInput = {
+    id?: SortOrder
+    book_name?: SortOrder
+    writer?: SortOrder
+    genre?: SortOrder
+    description?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    pdf_url_createdAt?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_thumbnail?: ThumbnailOrderByWithRelationInput
+  }
+
+  export type EbookWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    ThumbnailId?: number
+    AND?: EbookWhereInput | EbookWhereInput[]
+    OR?: EbookWhereInput[]
+    NOT?: EbookWhereInput | EbookWhereInput[]
+    book_name?: StringFilter<"Ebook"> | string
+    writer?: StringFilter<"Ebook"> | string
+    genre?: StringFilter<"Ebook"> | string
+    description?: StringFilter<"Ebook"> | string
+    pdf_name?: StringFilter<"Ebook"> | string
+    pdf_url?: StringNullableFilter<"Ebook"> | string | null
+    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    pdf_thumbnail?: XOR<ThumbnailScalarRelationFilter, ThumbnailWhereInput>
+  }, "id" | "ThumbnailId">
+
+  export type EbookOrderByWithAggregationInput = {
+    id?: SortOrder
+    book_name?: SortOrder
+    writer?: SortOrder
+    genre?: SortOrder
+    description?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    pdf_url_createdAt?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    _count?: EbookCountOrderByAggregateInput
+    _avg?: EbookAvgOrderByAggregateInput
+    _max?: EbookMaxOrderByAggregateInput
+    _min?: EbookMinOrderByAggregateInput
+    _sum?: EbookSumOrderByAggregateInput
+  }
+
+  export type EbookScalarWhereWithAggregatesInput = {
+    AND?: EbookScalarWhereWithAggregatesInput | EbookScalarWhereWithAggregatesInput[]
+    OR?: EbookScalarWhereWithAggregatesInput[]
+    NOT?: EbookScalarWhereWithAggregatesInput | EbookScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Ebook"> | number
+    book_name?: StringWithAggregatesFilter<"Ebook"> | string
+    writer?: StringWithAggregatesFilter<"Ebook"> | string
+    genre?: StringWithAggregatesFilter<"Ebook"> | string
+    description?: StringWithAggregatesFilter<"Ebook"> | string
+    pdf_name?: StringWithAggregatesFilter<"Ebook"> | string
+    pdf_url?: StringNullableWithAggregatesFilter<"Ebook"> | string | null
+    pdf_url_createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
+    ThumbnailId?: IntWithAggregatesFilter<"Ebook"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
+  }
+
+  export type ThumbnailWhereInput = {
+    AND?: ThumbnailWhereInput | ThumbnailWhereInput[]
+    OR?: ThumbnailWhereInput[]
+    NOT?: ThumbnailWhereInput | ThumbnailWhereInput[]
+    id?: IntFilter<"Thumbnail"> | number
+    image_url?: StringFilter<"Thumbnail"> | string
+    public_id?: StringFilter<"Thumbnail"> | string
+    createdAt?: DateTimeFilter<"Thumbnail"> | Date | string
+    ebooks?: EbookListRelationFilter
+  }
+
+  export type ThumbnailOrderByWithRelationInput = {
+    id?: SortOrder
+    image_url?: SortOrder
+    public_id?: SortOrder
+    createdAt?: SortOrder
+    ebooks?: EbookOrderByRelationAggregateInput
+  }
+
+  export type ThumbnailWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ThumbnailWhereInput | ThumbnailWhereInput[]
+    OR?: ThumbnailWhereInput[]
+    NOT?: ThumbnailWhereInput | ThumbnailWhereInput[]
+    image_url?: StringFilter<"Thumbnail"> | string
+    public_id?: StringFilter<"Thumbnail"> | string
+    createdAt?: DateTimeFilter<"Thumbnail"> | Date | string
+    ebooks?: EbookListRelationFilter
+  }, "id">
+
+  export type ThumbnailOrderByWithAggregationInput = {
+    id?: SortOrder
+    image_url?: SortOrder
+    public_id?: SortOrder
+    createdAt?: SortOrder
+    _count?: ThumbnailCountOrderByAggregateInput
+    _avg?: ThumbnailAvgOrderByAggregateInput
+    _max?: ThumbnailMaxOrderByAggregateInput
+    _min?: ThumbnailMinOrderByAggregateInput
+    _sum?: ThumbnailSumOrderByAggregateInput
+  }
+
+  export type ThumbnailScalarWhereWithAggregatesInput = {
+    AND?: ThumbnailScalarWhereWithAggregatesInput | ThumbnailScalarWhereWithAggregatesInput[]
+    OR?: ThumbnailScalarWhereWithAggregatesInput[]
+    NOT?: ThumbnailScalarWhereWithAggregatesInput | ThumbnailScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Thumbnail"> | number
+    image_url?: StringWithAggregatesFilter<"Thumbnail"> | string
+    public_id?: StringWithAggregatesFilter<"Thumbnail"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Thumbnail"> | Date | string
+  }
+
   export type userCreateInput = {
     name: string
     profile_pic?: string | null
@@ -6553,6 +9216,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectCreateNestedManyWithoutFacultyInput
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
@@ -6570,6 +9235,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
@@ -6586,6 +9253,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
@@ -6603,6 +9272,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
@@ -6620,6 +9291,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
   }
 
   export type userUpdateManyMutationInput = {
@@ -6632,6 +9305,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type userUncheckedUpdateManyInput = {
@@ -6645,6 +9320,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type subjectCreateInput = {
@@ -6854,6 +9531,143 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type EbookCreateInput = {
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    createdAt?: Date | string
+    pdf_thumbnail: ThumbnailCreateNestedOneWithoutEbooksInput
+  }
+
+  export type EbookUncheckedCreateInput = {
+    id?: number
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    ThumbnailId: number
+    createdAt?: Date | string
+  }
+
+  export type EbookUpdateInput = {
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_thumbnail?: ThumbnailUpdateOneRequiredWithoutEbooksNestedInput
+  }
+
+  export type EbookUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThumbnailId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EbookCreateManyInput = {
+    id?: number
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    ThumbnailId: number
+    createdAt?: Date | string
+  }
+
+  export type EbookUpdateManyMutationInput = {
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EbookUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ThumbnailId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThumbnailCreateInput = {
+    image_url: string
+    public_id: string
+    createdAt?: Date | string
+    ebooks?: EbookCreateNestedManyWithoutPdf_thumbnailInput
+  }
+
+  export type ThumbnailUncheckedCreateInput = {
+    id?: number
+    image_url: string
+    public_id: string
+    createdAt?: Date | string
+    ebooks?: EbookUncheckedCreateNestedManyWithoutPdf_thumbnailInput
+  }
+
+  export type ThumbnailUpdateInput = {
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ebooks?: EbookUpdateManyWithoutPdf_thumbnailNestedInput
+  }
+
+  export type ThumbnailUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ebooks?: EbookUncheckedUpdateManyWithoutPdf_thumbnailNestedInput
+  }
+
+  export type ThumbnailCreateManyInput = {
+    id?: number
+    image_url: string
+    public_id: string
+    createdAt?: Date | string
+  }
+
+  export type ThumbnailUpdateManyMutationInput = {
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThumbnailUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -6918,6 +9732,17 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type SubjectListRelationFilter = {
     every?: subjectWhereInput
     some?: subjectWhereInput
@@ -6964,6 +9789,8 @@ export namespace Prisma {
     semester?: SortOrder
     department?: SortOrder
     UserMongoId?: SortOrder
+    isPremimum?: SortOrder
+    premimum_expire_at?: SortOrder
   }
 
   export type userAvgOrderByAggregateInput = {
@@ -6982,6 +9809,8 @@ export namespace Prisma {
     semester?: SortOrder
     department?: SortOrder
     UserMongoId?: SortOrder
+    isPremimum?: SortOrder
+    premimum_expire_at?: SortOrder
   }
 
   export type userMinOrderByAggregateInput = {
@@ -6995,6 +9824,8 @@ export namespace Prisma {
     semester?: SortOrder
     department?: SortOrder
     UserMongoId?: SortOrder
+    isPremimum?: SortOrder
+    premimum_expire_at?: SortOrder
   }
 
   export type userSumOrderByAggregateInput = {
@@ -7086,6 +9917,20 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -7322,6 +10167,99 @@ export namespace Prisma {
     _max?: NestedEnumpaper_typeNullableFilter<$PrismaModel>
   }
 
+  export type ThumbnailScalarRelationFilter = {
+    is?: ThumbnailWhereInput
+    isNot?: ThumbnailWhereInput
+  }
+
+  export type EbookCountOrderByAggregateInput = {
+    id?: SortOrder
+    book_name?: SortOrder
+    writer?: SortOrder
+    genre?: SortOrder
+    description?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    pdf_url_createdAt?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EbookAvgOrderByAggregateInput = {
+    id?: SortOrder
+    ThumbnailId?: SortOrder
+  }
+
+  export type EbookMaxOrderByAggregateInput = {
+    id?: SortOrder
+    book_name?: SortOrder
+    writer?: SortOrder
+    genre?: SortOrder
+    description?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    pdf_url_createdAt?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EbookMinOrderByAggregateInput = {
+    id?: SortOrder
+    book_name?: SortOrder
+    writer?: SortOrder
+    genre?: SortOrder
+    description?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    pdf_url_createdAt?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EbookSumOrderByAggregateInput = {
+    id?: SortOrder
+    ThumbnailId?: SortOrder
+  }
+
+  export type EbookListRelationFilter = {
+    every?: EbookWhereInput
+    some?: EbookWhereInput
+    none?: EbookWhereInput
+  }
+
+  export type EbookOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ThumbnailCountOrderByAggregateInput = {
+    id?: SortOrder
+    image_url?: SortOrder
+    public_id?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThumbnailAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ThumbnailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image_url?: SortOrder
+    public_id?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThumbnailMinOrderByAggregateInput = {
+    id?: SortOrder
+    image_url?: SortOrder
+    public_id?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ThumbnailSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type subjectCreateNestedManyWithoutFacultyInput = {
     create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
     connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
@@ -7400,6 +10338,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type subjectUpdateManyWithoutFacultyNestedInput = {
@@ -7654,6 +10596,62 @@ export namespace Prisma {
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutPdfsInput, userUpdateWithoutPdfsInput>, userUncheckedUpdateWithoutPdfsInput>
   }
 
+  export type ThumbnailCreateNestedOneWithoutEbooksInput = {
+    create?: XOR<ThumbnailCreateWithoutEbooksInput, ThumbnailUncheckedCreateWithoutEbooksInput>
+    connectOrCreate?: ThumbnailCreateOrConnectWithoutEbooksInput
+    connect?: ThumbnailWhereUniqueInput
+  }
+
+  export type ThumbnailUpdateOneRequiredWithoutEbooksNestedInput = {
+    create?: XOR<ThumbnailCreateWithoutEbooksInput, ThumbnailUncheckedCreateWithoutEbooksInput>
+    connectOrCreate?: ThumbnailCreateOrConnectWithoutEbooksInput
+    upsert?: ThumbnailUpsertWithoutEbooksInput
+    connect?: ThumbnailWhereUniqueInput
+    update?: XOR<XOR<ThumbnailUpdateToOneWithWhereWithoutEbooksInput, ThumbnailUpdateWithoutEbooksInput>, ThumbnailUncheckedUpdateWithoutEbooksInput>
+  }
+
+  export type EbookCreateNestedManyWithoutPdf_thumbnailInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
+    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
+    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+  }
+
+  export type EbookUncheckedCreateNestedManyWithoutPdf_thumbnailInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
+    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
+    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+  }
+
+  export type EbookUpdateManyWithoutPdf_thumbnailNestedInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
+    upsert?: EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput[]
+    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
+    set?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    disconnect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    delete?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    update?: EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput[]
+    updateMany?: EbookUpdateManyWithWhereWithoutPdf_thumbnailInput | EbookUpdateManyWithWhereWithoutPdf_thumbnailInput[]
+    deleteMany?: EbookScalarWhereInput | EbookScalarWhereInput[]
+  }
+
+  export type EbookUncheckedUpdateManyWithoutPdf_thumbnailNestedInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
+    upsert?: EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput[]
+    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
+    set?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    disconnect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    delete?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+    update?: EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput[]
+    updateMany?: EbookUpdateManyWithWhereWithoutPdf_thumbnailInput | EbookUpdateManyWithWhereWithoutPdf_thumbnailInput[]
+    deleteMany?: EbookScalarWhereInput | EbookScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7714,6 +10712,17 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7820,6 +10829,20 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -8139,6 +11162,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
@@ -8155,6 +11180,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
@@ -8211,6 +11238,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
@@ -8227,6 +11256,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
@@ -8258,6 +11289,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectCreateNestedManyWithoutFacultyInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
@@ -8274,6 +11307,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
@@ -8316,6 +11351,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectCreateNestedManyWithoutFacultyInput
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
@@ -8332,6 +11369,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
@@ -8363,6 +11402,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUpdateManyWithoutFacultyNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
@@ -8379,6 +11420,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
@@ -8433,6 +11476,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
@@ -8449,6 +11494,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
@@ -8464,6 +11511,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectCreateNestedManyWithoutFacultyInput
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
@@ -8480,6 +11529,8 @@ export namespace Prisma {
     semester?: number | null
     department?: string | null
     UserMongoId: string
+    isPremimum?: boolean
+    premimum_expire_at?: Date | string | null
     subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
@@ -8511,6 +11562,8 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
@@ -8527,9 +11580,118 @@ export namespace Prisma {
     semester?: NullableIntFieldUpdateOperationsInput | number | null
     department?: NullableStringFieldUpdateOperationsInput | string | null
     UserMongoId?: StringFieldUpdateOperationsInput | string
+    isPremimum?: BoolFieldUpdateOperationsInput | boolean
+    premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type ThumbnailCreateWithoutEbooksInput = {
+    image_url: string
+    public_id: string
+    createdAt?: Date | string
+  }
+
+  export type ThumbnailUncheckedCreateWithoutEbooksInput = {
+    id?: number
+    image_url: string
+    public_id: string
+    createdAt?: Date | string
+  }
+
+  export type ThumbnailCreateOrConnectWithoutEbooksInput = {
+    where: ThumbnailWhereUniqueInput
+    create: XOR<ThumbnailCreateWithoutEbooksInput, ThumbnailUncheckedCreateWithoutEbooksInput>
+  }
+
+  export type ThumbnailUpsertWithoutEbooksInput = {
+    update: XOR<ThumbnailUpdateWithoutEbooksInput, ThumbnailUncheckedUpdateWithoutEbooksInput>
+    create: XOR<ThumbnailCreateWithoutEbooksInput, ThumbnailUncheckedCreateWithoutEbooksInput>
+    where?: ThumbnailWhereInput
+  }
+
+  export type ThumbnailUpdateToOneWithWhereWithoutEbooksInput = {
+    where?: ThumbnailWhereInput
+    data: XOR<ThumbnailUpdateWithoutEbooksInput, ThumbnailUncheckedUpdateWithoutEbooksInput>
+  }
+
+  export type ThumbnailUpdateWithoutEbooksInput = {
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ThumbnailUncheckedUpdateWithoutEbooksInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image_url?: StringFieldUpdateOperationsInput | string
+    public_id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EbookCreateWithoutPdf_thumbnailInput = {
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type EbookUncheckedCreateWithoutPdf_thumbnailInput = {
+    id?: number
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type EbookCreateOrConnectWithoutPdf_thumbnailInput = {
+    where: EbookWhereUniqueInput
+    create: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+  }
+
+  export type EbookCreateManyPdf_thumbnailInputEnvelope = {
+    data: EbookCreateManyPdf_thumbnailInput | EbookCreateManyPdf_thumbnailInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput = {
+    where: EbookWhereUniqueInput
+    update: XOR<EbookUpdateWithoutPdf_thumbnailInput, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
+    create: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+  }
+
+  export type EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput = {
+    where: EbookWhereUniqueInput
+    data: XOR<EbookUpdateWithoutPdf_thumbnailInput, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
+  }
+
+  export type EbookUpdateManyWithWhereWithoutPdf_thumbnailInput = {
+    where: EbookScalarWhereInput
+    data: XOR<EbookUpdateManyMutationInput, EbookUncheckedUpdateManyWithoutPdf_thumbnailInput>
+  }
+
+  export type EbookScalarWhereInput = {
+    AND?: EbookScalarWhereInput | EbookScalarWhereInput[]
+    OR?: EbookScalarWhereInput[]
+    NOT?: EbookScalarWhereInput | EbookScalarWhereInput[]
+    id?: IntFilter<"Ebook"> | number
+    book_name?: StringFilter<"Ebook"> | string
+    writer?: StringFilter<"Ebook"> | string
+    genre?: StringFilter<"Ebook"> | string
+    description?: StringFilter<"Ebook"> | string
+    pdf_name?: StringFilter<"Ebook"> | string
+    pdf_url?: StringNullableFilter<"Ebook"> | string | null
+    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    ThumbnailId?: IntFilter<"Ebook"> | number
+    createdAt?: DateTimeFilter<"Ebook"> | Date | string
   }
 
   export type subjectCreateManyFacultyInput = {
@@ -8703,6 +11865,53 @@ export namespace Prisma {
     teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  }
+
+  export type EbookCreateManyPdf_thumbnailInput = {
+    id?: number
+    book_name: string
+    writer: string
+    genre: string
+    description: string
+    pdf_name: string
+    pdf_url?: string | null
+    pdf_url_createdAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type EbookUpdateWithoutPdf_thumbnailInput = {
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EbookUncheckedUpdateWithoutPdf_thumbnailInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EbookUncheckedUpdateManyWithoutPdf_thumbnailInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

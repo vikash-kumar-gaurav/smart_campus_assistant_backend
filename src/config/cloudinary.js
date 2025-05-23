@@ -9,6 +9,8 @@ cloudinary.v2.config({
 
 const uploadImage = async (req, res, next) => {
     console.log("Reached cloudinary upload");
+    
+    
 
     try {
        
@@ -37,7 +39,7 @@ const uploadImage = async (req, res, next) => {
         // Await the result from the stream
         //if it is single file
         if(req.file && req.file.buffer){
-            const url = await uploadFromBuffer(req.file.buffer);
+            const url = await uploadFromBuffer(req.imageBuffer || req.file.buffer  );//image buffer is for pdf-to-img
             req.cloudinaryUrls = {
                 URL:url.secure_url,
                 public_id:url.public_id

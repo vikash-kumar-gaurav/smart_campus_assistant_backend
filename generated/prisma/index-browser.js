@@ -127,7 +127,9 @@ exports.Prisma.UserScalarFieldEnum = {
   is_active: 'is_active',
   semester: 'semester',
   department: 'department',
-  UserMongoId: 'UserMongoId'
+  UserMongoId: 'UserMongoId',
+  isPremimum: 'isPremimum',
+  premimum_expire_at: 'premimum_expire_at'
 };
 
 exports.Prisma.SubjectScalarFieldEnum = {
@@ -158,6 +160,26 @@ exports.Prisma.PdfScalarFieldEnum = {
   pdf_Url: 'pdf_Url',
   posted_by: 'posted_by',
   expireAt: 'expireAt',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.EbookScalarFieldEnum = {
+  id: 'id',
+  book_name: 'book_name',
+  writer: 'writer',
+  genre: 'genre',
+  description: 'description',
+  pdf_name: 'pdf_name',
+  pdf_url: 'pdf_url',
+  pdf_url_createdAt: 'pdf_url_createdAt',
+  ThumbnailId: 'ThumbnailId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ThumbnailScalarFieldEnum = {
+  id: 'id',
+  image_url: 'image_url',
+  public_id: 'public_id',
   createdAt: 'createdAt'
 };
 
@@ -213,7 +235,9 @@ exports.Prisma.ModelName = {
   user: 'user',
   subject: 'subject',
   attendance: 'attendance',
-  pdf: 'pdf'
+  pdf: 'pdf',
+  Ebook: 'Ebook',
+  Thumbnail: 'Thumbnail'
 };
 
 /**
