@@ -14,6 +14,7 @@ import riddleRouter from './src/routes/today_riddle.route.js'
 import pdfuploadRouter from './src/routes/pdf.upload.route.js'
 import eventRouter from './src/routes/Event.route.js'
 import ebookRouter from './src/routes/Ebook.route.js'
+import lostfoundRouter  from './src/routes/Lostfound.route.js'
 const PORT = process.env.PORT || 3000
 
 
@@ -52,3 +53,4 @@ app.use(riddleRouter)
 app.use(pdfuploadRouter)
 app.use(eventRouter)
 app.use(ebookRouter)
+app.use(lostfoundRouter)

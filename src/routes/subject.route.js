@@ -4,7 +4,7 @@ import validateToken from '../middleware/userAuth.js'
 const router = Routes()
 
 router.post('/subject-create',validateToken,createSubjectController)
-router.get('/get-allsubjects',getAllSubjectController)
+router.get('/get-allsubjects',validateToken,getAllSubjectController)
 
 
 

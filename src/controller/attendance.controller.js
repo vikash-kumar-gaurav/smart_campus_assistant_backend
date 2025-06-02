@@ -3,7 +3,7 @@ import prisma from "../config/prismaConnect.js";
 export async function markAttendanceController(req, res) {
     const { studentId, subjectId, is_present, date } = req.body;
     const role = req.userData?.user
-    if(!role === "admin" || !role === "faculty"){
+    if (role !== "admin" && role !== "faculty") {
         return res.status(403).json({
             msg:"buddy you are not authorized to mark attendance so please leave it don't waste time",
             success:false
@@ -60,7 +60,44 @@ export async function seeAttendanceControllerr(req,res) {
 
 //se your own attendance fors student
 export async function StudentAttendenceController(req,res) {
-    const { } = req.body
+
+   try {
+       const userId = req.userData.id
+        const targetDate = new Date('2025-04-01');
+        const targetEndDay = new Date('2025-06-29')
+
+        // Start of the day: 00:00:00.000
+        const startOfDay = new Date(targetDate);
+        startOfDay.setHours(0, 0, 0, 0);
+
+        // End of the day: 23:59:59.999
+        const endOfDay = new Date(targetEndDay);
+        endOfDay.setHours(23, 59, 59, 999);
+        const attendance = await prisma.attendance.findMany({
+        where:{
+            studentId:userId,
+            date:{
+            gte: startOfDay,
+            lte: endOfDay
+            }
+        },
+        include:{
+            teacher:true,
+            subject:true
+        }
+       })
+
+       return res.status(200).json({
+        success:true,
+        attendance
+       })
+   } catch (error) {
+    console.log("error from studentAttendanceController",error.message || error);
+    return res.status(500).json({
+        success:true,
+        msg:"Server errror"
+       })
+   }
     
 }
 
@@ -69,14 +106,15 @@ export async function markBunchAttendanceController(req,res) {
     const { subjectId } = req.query
     const {studentData} = req.body
     const role = req.userData?.role
+    const userId = req.userData?.id
     
     
     try {
-        if(!role === "admin" || !role === "faculty"){
+        if (role !== "admin" && role !== "faculty") {
             return res.status(403).json({
-                msg:"buddy you are not authorized to mark attendance so please leave it don't waste time",
-                success:false
-            })
+            msg: "buddy you are not authorized to mark attendance so please leave it don't waste time",
+            success: false
+            });
         }
         
         if( !Array.isArray(studentData)){
@@ -89,7 +127,8 @@ export async function markBunchAttendanceController(req,res) {
             studentId:student.id,
             subjectId:parseInt(subjectId),
             date: new Date(),
-            is_present:student.status
+            is_present:student.status, 
+            teacherId : userId
 
         }))
         const result = await prisma.attendance.createMany({

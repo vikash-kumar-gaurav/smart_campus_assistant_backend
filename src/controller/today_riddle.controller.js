@@ -5,7 +5,7 @@ export async function createRiddleController(req,res) {
     const { question, options, correct_answer, explanation}   = req.body
     const userId = req.userData.UserMongoId
     const role = req.userData.role
-    console.log("hi from create riddle");
+    
     
     
     try {
@@ -51,7 +51,7 @@ export async function createRiddleController(req,res) {
 //see all riddle of the day
 export async function seeTodayRiddleController(req,res) {
     try {
-        const riddles = await Riddle.find()
+        const riddles = await Riddle.find().populate('posted_by', 'name')
         return res.status(200).json({
             success:true,
             riddles

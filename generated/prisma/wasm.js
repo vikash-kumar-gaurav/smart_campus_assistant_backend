@@ -213,7 +213,7 @@ exports.Category = exports.$Enums.Category = {
   Pyqs: 'Pyqs',
   Cimage_internal_exams: 'Cimage_internal_exams',
   Montly_Test: 'Montly_Test',
-  Technical: 'Technical'
+  Notes: 'Notes'
 };
 
 exports.Course = exports.$Enums.Course = {

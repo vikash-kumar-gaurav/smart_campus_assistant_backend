@@ -41,7 +41,7 @@ export async function uploadPdfs(req,res,next) {
         req.pdfData = uploadResult.data
         return  next()
     } catch (error) {
-        console.log(`error from uploadPdfs ${error}`);
+        console.log("error from uploadPdfs",error);
         return res.status(500)
         
     }

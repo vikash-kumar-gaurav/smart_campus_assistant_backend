@@ -82,7 +82,7 @@ export const Category: {
   Pyqs: 'Pyqs',
   Cimage_internal_exams: 'Cimage_internal_exams',
   Montly_Test: 'Montly_Test',
-  Technical: 'Technical'
+  Notes: 'Notes'
 };
 
 export type Category = (typeof Category)[keyof typeof Category]

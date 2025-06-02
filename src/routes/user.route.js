@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { bulkregisterController, createUserController, findUserController, loginController } from '../controller/user.controller.js'
+import { bulkregisterController, createUserController, findUserController, getUserByIdController, loginController } from '../controller/user.controller.js'
 import  { Imgupload } from '../config/multer.js'
 import { compressImg } from "../config/imgCompressor_sharp.js";
 import uploadImage from "../config/cloudinary.js";
@@ -11,4 +11,5 @@ router.get('/get-all-student',findUserController)
 router.post('/login',loginController)
 router.post('/register-inbulk',bulkregisterController)
 router.get('/check-me', checkToken)
+router.get('/get-student-by-id',validateToken,getUserByIdController)
 export default router;

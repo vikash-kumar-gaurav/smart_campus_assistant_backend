@@ -101,7 +101,7 @@ enum Category {
   Pyqs
   Cimage_internal_exams
   Montly_Test
-  Technical
+  Notes
 }
 
 enum paper_type {

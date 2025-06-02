@@ -73,7 +73,7 @@ export async function getAllEbook(req, res) {
     const books = await prisma.ebook.findMany({
       skip,
       take: limit,
-      orderBy: { createdAt: "desc" }, // optional: show recent books first
+      orderBy: { createdAt: 'desc' }, // optional: show recent books first
       include: {
         pdf_thumbnail: true,
       },

@@ -1,4 +1,3 @@
-
 import prisma from '../config/prismaConnect.js'
 import User from '../models/user.models.js'
 import bcrypt from 'bcrypt'
@@ -21,6 +20,14 @@ import { generate_accessToken, generate_refreshToken } from '../utils/tokenGener
             return res.status(401).json({
                 success: false,
                 msg:"Give  all details"
+            })
+        }
+
+        const existtUser = await User.find({email:email})
+        if(existtUser){
+            return res.status(401).json({
+                success: false,
+                msg:"user already available"
             })
         }
 
@@ -136,6 +143,8 @@ export async function loginController(req,res) {
     try {
         const {email, password, rememberMe } = req.body
         const isremember = rememberMe === "true" || rememberMe ===true
+        console.log(isremember);
+        
         
         
         if(!email || !password){
@@ -167,7 +176,7 @@ export async function loginController(req,res) {
 
         //if every thing is fine return accessToken , refreshToken and a alert mail(not necessary)
 
-        const accessToken = await generate_accessToken(email, user.role, user.UserMongoId,user.id)
+        const accessToken = await generate_accessToken( email, user.role, user.UserMongoId,user.id)
         const refreshToken = await generate_refreshToken(email,user.role, user.UserMongoId,user.id)
 
         const cookieOptions = {
@@ -188,7 +197,10 @@ export async function loginController(req,res) {
                     name:user.name,
                     email:user.email,
                     role:user.role,
-                    profile_pic:user.profile_pic
+                    profile_pic:user.profile_pic,
+                    semester:user.semester,
+                    department:user.department,
+                    id:user.id
                 }
         })
     } catch (error) {
@@ -241,9 +253,10 @@ export async function changePasswordController(req,res) {
     }
 }
 
-//find user one the basic of query parameter like course and semester
+//find user on the basic of query parameter like course and semester
 export async function findUserController(req, res) {
     const { semester, department } = req.query; // Changed to req.query for query parameters
+    
     try {
         if (!semester || !department) {
             return res.status(400).json({ // Changed status code to 400 for bad request
@@ -274,5 +287,41 @@ export async function findUserController(req, res) {
             success: false,
             msg: "Server error, try later"
         });
+    }
+}
+
+//find one student with the help of userId 
+export async function getUserByIdController(req,res) {
+    try {
+        const { userId } = req.query
+        const userRole = req.userData.role
+        if(userRole !== "admin" && userRole !== "faculty") {
+            return res.status(403).json({
+                msg:"you are not authorized to access this",
+                success:false
+            })
+        }
+        const student = await prisma.user.findUnique({
+            where: {
+                id: parseInt(userId)
+            },
+            select: {
+                name: true,
+                semester: true,
+                department: true
+            }
+        })
+
+        return res.status(200).json({
+            success: true,
+            student
+        })
+    } catch (error) {
+        console.log("error from getUserbyIdController",error.message || error);
+        return res.status(500).json({
+            msg:"Server Error",
+            success:false
+        })
+        
     }
 }

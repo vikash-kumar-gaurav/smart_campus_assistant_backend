@@ -5,7 +5,7 @@ import { v2 as cloudinary } from 'cloudinary';
 //create a new suggestion or complain
 export async function createSuggestionController(req,res) {
     const { complain_suggestion, category } = req.body
-    console.log(req.userData)
+    
     const email = req.userData?.email
     const userId = req.userData?.UserMongoId
     const images_URI = req.cloudinaryUrls ||  []
@@ -43,6 +43,55 @@ export async function createSuggestionController(req,res) {
     }
 }
 
+
+// view all complain or suggestion by the teaacher or faculty
+export async function getAllComplain_SuggestionController(req,res) {
+    const role = req.userData.role
+    if(role !== "admin" && role !== "faculty"){
+        return res.status(403).json({
+            msg:"You are not authorized to access others complains or suggestion",
+            success:false
+        })
+    }
+    try {
+        const complain_suggestion = await Suggestion.find().lean().select("-_id -compliant -createdAt -updatedAt -__v")
+        return res.status(200).json({
+            msg:"All suggestion and complain is ...",
+            success:true,
+            complain_suggestion
+        })
+    } catch (error) {
+        console.log("error from getAllComplain_SuggestionController ", error.message || error);
+        return res.status(500).json({
+            msg:"Server Error try later",
+            success:false,
+            
+        })
+    }
+}
+
+//users their own complain or suggestion
+export async function getYourComplainController(req,res) {
+   try {
+     const UserId = req.userData.UserMongoId
+     const complain_suggestion = await Suggestion.find({compliant:UserId}).lean().select("imageUrl category complain_suggestion status -_id")
+     
+ 
+ 
+      return res.status(200).json({
+             msg:"your complain or suggestion",
+             success:true,
+             complain_suggestion
+         })
+   } catch (error) {
+    console.log("error from getYourComplainController", error.message || error);
+    
+    return res.status(200).json({
+        msg:"Server error",
+        success:false,
+        })
+   }
+}
 
 // for deleting suggestion or complaints
 export async function deleteComplaneController(req, res) {

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export async function generate_accessToken(email, role,UserMongoId,id) {
+export async function generate_accessToken( email, role,UserMongoId,id) {
     try {
         const token = jwt.sign({ email, role,UserMongoId,id }, process.env.SIGNATURE, { expiresIn: '30m' });
         return token;
@@ -10,7 +10,7 @@ export async function generate_accessToken(email, role,UserMongoId,id) {
     }
 }
 
-export async function generate_refreshToken(email, role,UserMongoId,id) {
+export async function generate_refreshToken( email, role,UserMongoId,id) {
     try {
         const token = jwt.sign({ email, role,UserMongoId,id }, process.env.SIGNATURE, { expiresIn: '3h' });
         return token;

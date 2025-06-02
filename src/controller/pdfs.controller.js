@@ -15,15 +15,7 @@ export async function createpdf(req, res) {
                 success: false
             });
         }
-        if (category === "Pyqs" && Pyq_category === undefined) {
-            return res.status(403).json({
-                success: false,
-                msg: "please select Paper Type",
-            });
-        }
-
         
-
         await prisma.pdf.create({
             data: {
                 fileName: pdfData.fileName,
@@ -51,6 +43,8 @@ export async function createpdf(req, res) {
 //to get name of all psf files
 export async function getpdfnameController(req,res) {
     const { category,year,Department,Pyq_category } = req.query
+    console.log(category,year,Department);
+    
     try {
         const pdfs = await prisma.pdf.findMany({
             where: {

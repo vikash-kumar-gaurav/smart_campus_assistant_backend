@@ -9,7 +9,7 @@ export async function createClassworkController(req,res) {
     const imageUrl = req.cloudinaryUrls
 
     try {
-        if(!role === "admin" || !role === "faculty"){
+        if(!role === "admin" && !role === "faculty"){
             return res.status(403).json({
                 msg:"buddy you are not authorized to make classwork so please leave it don't waste time",
                 success:false
@@ -71,7 +71,7 @@ export async function getclassWorkController(req,res) {
         return res.status(200).json({
             msg:"Your classwork is here",
             success:true,
-            classwork: allworks
+            classworks: allworks
         })
     } catch (error) {
         console.log(`error from getclassWorkController ${error}`)
@@ -80,5 +80,63 @@ export async function getclassWorkController(req,res) {
             success:false
         })
         
+    }
+}
+
+//get the created classwork by the teacher or the faculty
+export async function myClassworkController(req,res) {
+    const userId = req.userData.UserMongoId
+    try {
+        const classworks = await ClassWork.find({posted_by:userId})
+        .sort({createdAt:-1})
+        .select("-posted_by -_id -createdAt -updatedAt -__v")
+        .lean()
+        return res.status(200).json({
+            msg:"you classwork",
+            success:true,
+            classworks
+        })
+    } catch (error) {
+        console.log("error from myClassworkController", error.message || error);
+        return res.status(500).json({
+            msg:"Server Error try later",
+            success:false
+        })
+        
+    }
+}
+
+//admin can see all the classwork here that is uploaded by the faculty
+export async function getAllClassworkController(req,res) {
+    const role = req.userData.role
+    try {
+        if(role !== "admin"){
+         return res.status(401).json({
+            msg:"you are not authorized to access this route",
+            success:false
+         })   
+
+        }
+
+        const classworks = await ClassWork.find()
+        .populate("posted_by", "name profile_pic")
+        .sort({createdAt:-1})
+        .select(" -updatedAt -__v ")
+        .lean()
+
+        return res.status(200).json({
+            classworks,
+            success:true,
+            classworks
+        })
+
+
+    } catch (error) {
+        console.log("error from getAllClassworkController",error.message|| error);
+        
+        return res.status(500).json({
+            msg:"Server Error",
+            success:false
+        })
     }
 }

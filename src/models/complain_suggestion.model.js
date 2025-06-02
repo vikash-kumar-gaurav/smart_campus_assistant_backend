@@ -19,6 +19,11 @@ const suggestion_Schema = new mongoose.Schema({
         type:String,
         required:true,
         trim:true
+    },
+    status:{
+        type:String,
+        enum:["Solved","unSolved"],
+        default:"unSolved"
     }
 },{
     timestamps:true
