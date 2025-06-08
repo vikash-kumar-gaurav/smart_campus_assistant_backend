@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
         unique:true,
         trim:true
     },
+    collegeId:{
+        type:String,
+        
+    },
+    roll_no:{
+        type:String,
+        
+    },
     password:{
         type:String,
         required:true,

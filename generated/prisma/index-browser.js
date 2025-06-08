@@ -129,7 +129,9 @@ exports.Prisma.UserScalarFieldEnum = {
   department: 'department',
   UserMongoId: 'UserMongoId',
   isPremimum: 'isPremimum',
-  premimum_expire_at: 'premimum_expire_at'
+  premimum_expire_at: 'premimum_expire_at',
+  roll_no: 'roll_no',
+  collegeId: 'collegeId'
 };
 
 exports.Prisma.SubjectScalarFieldEnum = {
@@ -145,9 +147,9 @@ exports.Prisma.AttendanceScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
   subjectId: 'subjectId',
-  teacherId: 'teacherId',
   date: 'date',
-  is_present: 'is_present'
+  is_present: 'is_present',
+  teacherId: 'teacherId'
 };
 
 exports.Prisma.PdfScalarFieldEnum = {
@@ -165,15 +167,15 @@ exports.Prisma.PdfScalarFieldEnum = {
 
 exports.Prisma.EbookScalarFieldEnum = {
   id: 'id',
+  pdf_name: 'pdf_name',
+  pdf_url: 'pdf_url',
+  ThumbnailId: 'ThumbnailId',
+  createdAt: 'createdAt',
+  pdf_url_createdAt: 'pdf_url_createdAt',
   book_name: 'book_name',
   writer: 'writer',
   genre: 'genre',
-  description: 'description',
-  pdf_name: 'pdf_name',
-  pdf_url: 'pdf_url',
-  pdf_url_createdAt: 'pdf_url_createdAt',
-  ThumbnailId: 'ThumbnailId',
-  createdAt: 'createdAt'
+  description: 'description'
 };
 
 exports.Prisma.ThumbnailScalarFieldEnum = {

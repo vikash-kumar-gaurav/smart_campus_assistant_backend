@@ -2,14 +2,14 @@ import Lostfound from "../models/Lost&Found.js";
 //to create a new data of lost or found
 export async function createLostfoundController(req,res) {
     try {
-        const { ItemName, Detail, category, contact, location } = req.body
-        console.log(ItemName, Detail, category, contact,location );
+        const { ItemName, Detail, category, contactNum, location } = req.body
+        console.log(ItemName, Detail, category, contactNum,location );
         
         const LostFoundImages = req.cloudinaryUrls
         console.log("lost and found url", LostFoundImages);
         
         const userId = req.userData.UserMongoId
-        if(!ItemName || !Detail || !category || !contact || !location){
+        if(!ItemName || !Detail || !category || !contactNum || !location){
             return res.status(401).json({
                 msg:"Please fill all details",
                 success:false
@@ -22,7 +22,7 @@ export async function createLostfoundController(req,res) {
             category,
             Items_image:LostFoundImages,
             userId,
-            contact,
+            contact:contactNum,
             location
         })
 

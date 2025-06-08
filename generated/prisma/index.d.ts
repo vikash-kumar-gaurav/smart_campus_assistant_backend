@@ -1398,17 +1398,17 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    subjects: number
     attendances: number
     attendance: number
     pdfs: number
+    subjects: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subjects?: boolean | UserCountOutputTypeCountSubjectsArgs
     attendances?: boolean | UserCountOutputTypeCountAttendancesArgs
     attendance?: boolean | UserCountOutputTypeCountAttendanceArgs
     pdfs?: boolean | UserCountOutputTypeCountPdfsArgs
+    subjects?: boolean | UserCountOutputTypeCountSubjectsArgs
   }
 
   // Custom InputTypes
@@ -1420,13 +1420,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountSubjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: subjectWhereInput
   }
 
   /**
@@ -1448,6 +1441,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPdfsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: pdfWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSubjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: subjectWhereInput
   }
 
 
@@ -1479,37 +1479,6 @@ export namespace Prisma {
    */
   export type SubjectCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: attendanceWhereInput
-  }
-
-
-  /**
-   * Count Type ThumbnailCountOutputType
-   */
-
-  export type ThumbnailCountOutputType = {
-    ebooks: number
-  }
-
-  export type ThumbnailCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ebooks?: boolean | ThumbnailCountOutputTypeCountEbooksArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ThumbnailCountOutputType without action
-   */
-  export type ThumbnailCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ThumbnailCountOutputType
-     */
-    select?: ThumbnailCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ThumbnailCountOutputType without action
-   */
-  export type ThumbnailCountOutputTypeCountEbooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EbookWhereInput
   }
 
 
@@ -1552,6 +1521,8 @@ export namespace Prisma {
     UserMongoId: string | null
     isPremimum: boolean | null
     premimum_expire_at: Date | null
+    roll_no: string | null
+    collegeId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1567,6 +1538,8 @@ export namespace Prisma {
     UserMongoId: string | null
     isPremimum: boolean | null
     premimum_expire_at: Date | null
+    roll_no: string | null
+    collegeId: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1582,6 +1555,8 @@ export namespace Prisma {
     UserMongoId: number
     isPremimum: number
     premimum_expire_at: number
+    roll_no: number
+    collegeId: number
     _all: number
   }
 
@@ -1609,6 +1584,8 @@ export namespace Prisma {
     UserMongoId?: true
     isPremimum?: true
     premimum_expire_at?: true
+    roll_no?: true
+    collegeId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1624,6 +1601,8 @@ export namespace Prisma {
     UserMongoId?: true
     isPremimum?: true
     premimum_expire_at?: true
+    roll_no?: true
+    collegeId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1639,6 +1618,8 @@ export namespace Prisma {
     UserMongoId?: true
     isPremimum?: true
     premimum_expire_at?: true
+    roll_no?: true
+    collegeId?: true
     _all?: true
   }
 
@@ -1741,6 +1722,8 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum: boolean
     premimum_expire_at: Date | null
+    roll_no: string | null
+    collegeId: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1775,10 +1758,12 @@ export namespace Prisma {
     UserMongoId?: boolean
     isPremimum?: boolean
     premimum_expire_at?: boolean
-    subjects?: boolean | user$subjectsArgs<ExtArgs>
+    roll_no?: boolean
+    collegeId?: boolean
     attendances?: boolean | user$attendancesArgs<ExtArgs>
     attendance?: boolean | user$attendanceArgs<ExtArgs>
     pdfs?: boolean | user$pdfsArgs<ExtArgs>
+    subjects?: boolean | user$subjectsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1795,6 +1780,8 @@ export namespace Prisma {
     UserMongoId?: boolean
     isPremimum?: boolean
     premimum_expire_at?: boolean
+    roll_no?: boolean
+    collegeId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1810,6 +1797,8 @@ export namespace Prisma {
     UserMongoId?: boolean
     isPremimum?: boolean
     premimum_expire_at?: boolean
+    roll_no?: boolean
+    collegeId?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectScalar = {
@@ -1825,14 +1814,16 @@ export namespace Prisma {
     UserMongoId?: boolean
     isPremimum?: boolean
     premimum_expire_at?: boolean
+    roll_no?: boolean
+    collegeId?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "profile_pic" | "email" | "password" | "role" | "is_active" | "semester" | "department" | "UserMongoId" | "isPremimum" | "premimum_expire_at", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "profile_pic" | "email" | "password" | "role" | "is_active" | "semester" | "department" | "UserMongoId" | "isPremimum" | "premimum_expire_at" | "roll_no" | "collegeId", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    subjects?: boolean | user$subjectsArgs<ExtArgs>
     attendances?: boolean | user$attendancesArgs<ExtArgs>
     attendance?: boolean | user$attendanceArgs<ExtArgs>
     pdfs?: boolean | user$pdfsArgs<ExtArgs>
+    subjects?: boolean | user$subjectsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1841,10 +1832,10 @@ export namespace Prisma {
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
     objects: {
-      subjects: Prisma.$subjectPayload<ExtArgs>[]
       attendances: Prisma.$attendancePayload<ExtArgs>[]
       attendance: Prisma.$attendancePayload<ExtArgs>[]
       pdfs: Prisma.$pdfPayload<ExtArgs>[]
+      subjects: Prisma.$subjectPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1859,6 +1850,8 @@ export namespace Prisma {
       UserMongoId: string
       isPremimum: boolean
       premimum_expire_at: Date | null
+      roll_no: string | null
+      collegeId: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2253,10 +2246,10 @@ export namespace Prisma {
    */
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    subjects<T extends user$subjectsArgs<ExtArgs> = {}>(args?: Subset<T, user$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendances<T extends user$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, user$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$attendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendance<T extends user$attendanceArgs<ExtArgs> = {}>(args?: Subset<T, user$attendanceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$attendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pdfs<T extends user$pdfsArgs<ExtArgs> = {}>(args?: Subset<T, user$pdfsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pdfPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subjects<T extends user$subjectsArgs<ExtArgs> = {}>(args?: Subset<T, user$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2298,6 +2291,8 @@ export namespace Prisma {
     readonly UserMongoId: FieldRef<"user", 'String'>
     readonly isPremimum: FieldRef<"user", 'Boolean'>
     readonly premimum_expire_at: FieldRef<"user", 'DateTime'>
+    readonly roll_no: FieldRef<"user", 'String'>
+    readonly collegeId: FieldRef<"user", 'String'>
   }
     
 
@@ -2686,30 +2681,6 @@ export namespace Prisma {
   }
 
   /**
-   * user.subjects
-   */
-  export type user$subjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the subject
-     */
-    select?: subjectSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the subject
-     */
-    omit?: subjectOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: subjectInclude<ExtArgs> | null
-    where?: subjectWhereInput
-    orderBy?: subjectOrderByWithRelationInput | subjectOrderByWithRelationInput[]
-    cursor?: subjectWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
-  }
-
-  /**
    * user.attendances
    */
   export type user$attendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2779,6 +2750,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PdfScalarFieldEnum | PdfScalarFieldEnum[]
+  }
+
+  /**
+   * user.subjects
+   */
+  export type user$subjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the subject
+     */
+    select?: subjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the subject
+     */
+    omit?: subjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: subjectInclude<ExtArgs> | null
+    where?: subjectWhereInput
+    orderBy?: subjectOrderByWithRelationInput | subjectOrderByWithRelationInput[]
+    cursor?: subjectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
   }
 
   /**
@@ -3014,8 +3009,8 @@ export namespace Prisma {
     semester?: boolean
     department?: boolean
     facultyId?: boolean
-    faculty?: boolean | userDefaultArgs<ExtArgs>
     attendances?: boolean | subject$attendancesArgs<ExtArgs>
+    faculty?: boolean | userDefaultArgs<ExtArgs>
     _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subject"]>
 
@@ -3050,8 +3045,8 @@ export namespace Prisma {
 
   export type subjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "semester" | "department" | "facultyId", ExtArgs["result"]["subject"]>
   export type subjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    faculty?: boolean | userDefaultArgs<ExtArgs>
     attendances?: boolean | subject$attendancesArgs<ExtArgs>
+    faculty?: boolean | userDefaultArgs<ExtArgs>
     _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type subjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3064,8 +3059,8 @@ export namespace Prisma {
   export type $subjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "subject"
     objects: {
-      faculty: Prisma.$userPayload<ExtArgs>
       attendances: Prisma.$attendancePayload<ExtArgs>[]
+      faculty: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3468,8 +3463,8 @@ export namespace Prisma {
    */
   export interface Prisma__subjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    faculty<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     attendances<T extends subject$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, subject$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$attendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    faculty<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3973,27 +3968,27 @@ export namespace Prisma {
     id: number | null
     studentId: number | null
     subjectId: number | null
-    teacherId: number | null
     date: Date | null
     is_present: $Enums.Status | null
+    teacherId: number | null
   }
 
   export type AttendanceMaxAggregateOutputType = {
     id: number | null
     studentId: number | null
     subjectId: number | null
-    teacherId: number | null
     date: Date | null
     is_present: $Enums.Status | null
+    teacherId: number | null
   }
 
   export type AttendanceCountAggregateOutputType = {
     id: number
     studentId: number
     subjectId: number
-    teacherId: number
     date: number
     is_present: number
+    teacherId: number
     _all: number
   }
 
@@ -4016,27 +4011,27 @@ export namespace Prisma {
     id?: true
     studentId?: true
     subjectId?: true
-    teacherId?: true
     date?: true
     is_present?: true
+    teacherId?: true
   }
 
   export type AttendanceMaxAggregateInputType = {
     id?: true
     studentId?: true
     subjectId?: true
-    teacherId?: true
     date?: true
     is_present?: true
+    teacherId?: true
   }
 
   export type AttendanceCountAggregateInputType = {
     id?: true
     studentId?: true
     subjectId?: true
-    teacherId?: true
     date?: true
     is_present?: true
+    teacherId?: true
     _all?: true
   }
 
@@ -4130,9 +4125,9 @@ export namespace Prisma {
     id: number
     studentId: number
     subjectId: number
-    teacherId: number
     date: Date
     is_present: $Enums.Status
+    teacherId: number
     _count: AttendanceCountAggregateOutputType | null
     _avg: AttendanceAvgAggregateOutputType | null
     _sum: AttendanceSumAggregateOutputType | null
@@ -4158,9 +4153,9 @@ export namespace Prisma {
     id?: boolean
     studentId?: boolean
     subjectId?: boolean
-    teacherId?: boolean
     date?: boolean
     is_present?: boolean
+    teacherId?: boolean
     student?: boolean | userDefaultArgs<ExtArgs>
     subject?: boolean | subjectDefaultArgs<ExtArgs>
     teacher?: boolean | userDefaultArgs<ExtArgs>
@@ -4170,9 +4165,9 @@ export namespace Prisma {
     id?: boolean
     studentId?: boolean
     subjectId?: boolean
-    teacherId?: boolean
     date?: boolean
     is_present?: boolean
+    teacherId?: boolean
     student?: boolean | userDefaultArgs<ExtArgs>
     subject?: boolean | subjectDefaultArgs<ExtArgs>
     teacher?: boolean | userDefaultArgs<ExtArgs>
@@ -4182,9 +4177,9 @@ export namespace Prisma {
     id?: boolean
     studentId?: boolean
     subjectId?: boolean
-    teacherId?: boolean
     date?: boolean
     is_present?: boolean
+    teacherId?: boolean
     student?: boolean | userDefaultArgs<ExtArgs>
     subject?: boolean | subjectDefaultArgs<ExtArgs>
     teacher?: boolean | userDefaultArgs<ExtArgs>
@@ -4194,12 +4189,12 @@ export namespace Prisma {
     id?: boolean
     studentId?: boolean
     subjectId?: boolean
-    teacherId?: boolean
     date?: boolean
     is_present?: boolean
+    teacherId?: boolean
   }
 
-  export type attendanceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "subjectId" | "teacherId" | "date" | "is_present", ExtArgs["result"]["attendance"]>
+  export type attendanceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "subjectId" | "date" | "is_present" | "teacherId", ExtArgs["result"]["attendance"]>
   export type attendanceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | userDefaultArgs<ExtArgs>
     subject?: boolean | subjectDefaultArgs<ExtArgs>
@@ -4227,9 +4222,9 @@ export namespace Prisma {
       id: number
       studentId: number
       subjectId: number
-      teacherId: number
       date: Date
       is_present: $Enums.Status
+      teacherId: number
     }, ExtArgs["result"]["attendance"]>
     composites: {}
   }
@@ -4659,9 +4654,9 @@ export namespace Prisma {
     readonly id: FieldRef<"attendance", 'Int'>
     readonly studentId: FieldRef<"attendance", 'Int'>
     readonly subjectId: FieldRef<"attendance", 'Int'>
-    readonly teacherId: FieldRef<"attendance", 'Int'>
     readonly date: FieldRef<"attendance", 'DateTime'>
     readonly is_present: FieldRef<"attendance", 'Status'>
+    readonly teacherId: FieldRef<"attendance", 'Int'>
   }
     
 
@@ -6265,41 +6260,41 @@ export namespace Prisma {
 
   export type EbookMinAggregateOutputType = {
     id: number | null
+    pdf_name: string | null
+    pdf_url: string | null
+    ThumbnailId: number | null
+    createdAt: Date | null
+    pdf_url_createdAt: Date | null
     book_name: string | null
     writer: string | null
     genre: string | null
     description: string | null
-    pdf_name: string | null
-    pdf_url: string | null
-    pdf_url_createdAt: Date | null
-    ThumbnailId: number | null
-    createdAt: Date | null
   }
 
   export type EbookMaxAggregateOutputType = {
     id: number | null
+    pdf_name: string | null
+    pdf_url: string | null
+    ThumbnailId: number | null
+    createdAt: Date | null
+    pdf_url_createdAt: Date | null
     book_name: string | null
     writer: string | null
     genre: string | null
     description: string | null
-    pdf_name: string | null
-    pdf_url: string | null
-    pdf_url_createdAt: Date | null
-    ThumbnailId: number | null
-    createdAt: Date | null
   }
 
   export type EbookCountAggregateOutputType = {
     id: number
+    pdf_name: number
+    pdf_url: number
+    ThumbnailId: number
+    createdAt: number
+    pdf_url_createdAt: number
     book_name: number
     writer: number
     genre: number
     description: number
-    pdf_name: number
-    pdf_url: number
-    pdf_url_createdAt: number
-    ThumbnailId: number
-    createdAt: number
     _all: number
   }
 
@@ -6316,41 +6311,41 @@ export namespace Prisma {
 
   export type EbookMinAggregateInputType = {
     id?: true
+    pdf_name?: true
+    pdf_url?: true
+    ThumbnailId?: true
+    createdAt?: true
+    pdf_url_createdAt?: true
     book_name?: true
     writer?: true
     genre?: true
     description?: true
-    pdf_name?: true
-    pdf_url?: true
-    pdf_url_createdAt?: true
-    ThumbnailId?: true
-    createdAt?: true
   }
 
   export type EbookMaxAggregateInputType = {
     id?: true
+    pdf_name?: true
+    pdf_url?: true
+    ThumbnailId?: true
+    createdAt?: true
+    pdf_url_createdAt?: true
     book_name?: true
     writer?: true
     genre?: true
     description?: true
-    pdf_name?: true
-    pdf_url?: true
-    pdf_url_createdAt?: true
-    ThumbnailId?: true
-    createdAt?: true
   }
 
   export type EbookCountAggregateInputType = {
     id?: true
+    pdf_name?: true
+    pdf_url?: true
+    ThumbnailId?: true
+    createdAt?: true
+    pdf_url_createdAt?: true
     book_name?: true
     writer?: true
     genre?: true
     description?: true
-    pdf_name?: true
-    pdf_url?: true
-    pdf_url_createdAt?: true
-    ThumbnailId?: true
-    createdAt?: true
     _all?: true
   }
 
@@ -6442,15 +6437,15 @@ export namespace Prisma {
 
   export type EbookGroupByOutputType = {
     id: number
+    pdf_name: string
+    pdf_url: string | null
+    ThumbnailId: number
+    createdAt: Date
+    pdf_url_createdAt: Date
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url: string | null
-    pdf_url_createdAt: Date
-    ThumbnailId: number
-    createdAt: Date
     _count: EbookCountAggregateOutputType | null
     _avg: EbookAvgAggregateOutputType | null
     _sum: EbookSumAggregateOutputType | null
@@ -6474,60 +6469,60 @@ export namespace Prisma {
 
   export type EbookSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_url_createdAt?: boolean
     book_name?: boolean
     writer?: boolean
     genre?: boolean
     description?: boolean
-    pdf_name?: boolean
-    pdf_url?: boolean
-    pdf_url_createdAt?: boolean
-    ThumbnailId?: boolean
-    createdAt?: boolean
     pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ebook"]>
 
   export type EbookSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_url_createdAt?: boolean
     book_name?: boolean
     writer?: boolean
     genre?: boolean
     description?: boolean
-    pdf_name?: boolean
-    pdf_url?: boolean
-    pdf_url_createdAt?: boolean
-    ThumbnailId?: boolean
-    createdAt?: boolean
     pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ebook"]>
 
   export type EbookSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_url_createdAt?: boolean
     book_name?: boolean
     writer?: boolean
     genre?: boolean
     description?: boolean
-    pdf_name?: boolean
-    pdf_url?: boolean
-    pdf_url_createdAt?: boolean
-    ThumbnailId?: boolean
-    createdAt?: boolean
     pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ebook"]>
 
   export type EbookSelectScalar = {
     id?: boolean
+    pdf_name?: boolean
+    pdf_url?: boolean
+    ThumbnailId?: boolean
+    createdAt?: boolean
+    pdf_url_createdAt?: boolean
     book_name?: boolean
     writer?: boolean
     genre?: boolean
     description?: boolean
-    pdf_name?: boolean
-    pdf_url?: boolean
-    pdf_url_createdAt?: boolean
-    ThumbnailId?: boolean
-    createdAt?: boolean
   }
 
-  export type EbookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "book_name" | "writer" | "genre" | "description" | "pdf_name" | "pdf_url" | "pdf_url_createdAt" | "ThumbnailId" | "createdAt", ExtArgs["result"]["ebook"]>
+  export type EbookOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pdf_name" | "pdf_url" | "ThumbnailId" | "createdAt" | "pdf_url_createdAt" | "book_name" | "writer" | "genre" | "description", ExtArgs["result"]["ebook"]>
   export type EbookInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pdf_thumbnail?: boolean | ThumbnailDefaultArgs<ExtArgs>
   }
@@ -6545,15 +6540,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      pdf_name: string
+      pdf_url: string | null
+      ThumbnailId: number
+      createdAt: Date
+      pdf_url_createdAt: Date
       book_name: string
       writer: string
       genre: string
       description: string
-      pdf_name: string
-      pdf_url: string | null
-      pdf_url_createdAt: Date
-      ThumbnailId: number
-      createdAt: Date
     }, ExtArgs["result"]["ebook"]>
     composites: {}
   }
@@ -6979,15 +6974,15 @@ export namespace Prisma {
    */
   interface EbookFieldRefs {
     readonly id: FieldRef<"Ebook", 'Int'>
+    readonly pdf_name: FieldRef<"Ebook", 'String'>
+    readonly pdf_url: FieldRef<"Ebook", 'String'>
+    readonly ThumbnailId: FieldRef<"Ebook", 'Int'>
+    readonly createdAt: FieldRef<"Ebook", 'DateTime'>
+    readonly pdf_url_createdAt: FieldRef<"Ebook", 'DateTime'>
     readonly book_name: FieldRef<"Ebook", 'String'>
     readonly writer: FieldRef<"Ebook", 'String'>
     readonly genre: FieldRef<"Ebook", 'String'>
     readonly description: FieldRef<"Ebook", 'String'>
-    readonly pdf_name: FieldRef<"Ebook", 'String'>
-    readonly pdf_url: FieldRef<"Ebook", 'String'>
-    readonly pdf_url_createdAt: FieldRef<"Ebook", 'DateTime'>
-    readonly ThumbnailId: FieldRef<"Ebook", 'Int'>
-    readonly createdAt: FieldRef<"Ebook", 'DateTime'>
   }
     
 
@@ -7593,7 +7588,6 @@ export namespace Prisma {
     public_id?: boolean
     createdAt?: boolean
     ebooks?: boolean | Thumbnail$ebooksArgs<ExtArgs>
-    _count?: boolean | ThumbnailCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["thumbnail"]>
 
   export type ThumbnailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7620,7 +7614,6 @@ export namespace Prisma {
   export type ThumbnailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image_url" | "public_id" | "createdAt", ExtArgs["result"]["thumbnail"]>
   export type ThumbnailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ebooks?: boolean | Thumbnail$ebooksArgs<ExtArgs>
-    _count?: boolean | ThumbnailCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ThumbnailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type ThumbnailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7628,7 +7621,7 @@ export namespace Prisma {
   export type $ThumbnailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Thumbnail"
     objects: {
-      ebooks: Prisma.$EbookPayload<ExtArgs>[]
+      ebooks: Prisma.$EbookPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8029,7 +8022,7 @@ export namespace Prisma {
    */
   export interface Prisma__ThumbnailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    ebooks<T extends Thumbnail$ebooksArgs<ExtArgs> = {}>(args?: Subset<T, Thumbnail$ebooksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ebooks<T extends Thumbnail$ebooksArgs<ExtArgs> = {}>(args?: Subset<T, Thumbnail$ebooksArgs<ExtArgs>>): Prisma__EbookClient<$Result.GetResult<Prisma.$EbookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8467,11 +8460,6 @@ export namespace Prisma {
      */
     include?: EbookInclude<ExtArgs> | null
     where?: EbookWhereInput
-    orderBy?: EbookOrderByWithRelationInput | EbookOrderByWithRelationInput[]
-    cursor?: EbookWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: EbookScalarFieldEnum | EbookScalarFieldEnum[]
   }
 
   /**
@@ -8519,7 +8507,9 @@ export namespace Prisma {
     department: 'department',
     UserMongoId: 'UserMongoId',
     isPremimum: 'isPremimum',
-    premimum_expire_at: 'premimum_expire_at'
+    premimum_expire_at: 'premimum_expire_at',
+    roll_no: 'roll_no',
+    collegeId: 'collegeId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8541,9 +8531,9 @@ export namespace Prisma {
     id: 'id',
     studentId: 'studentId',
     subjectId: 'subjectId',
-    teacherId: 'teacherId',
     date: 'date',
-    is_present: 'is_present'
+    is_present: 'is_present',
+    teacherId: 'teacherId'
   };
 
   export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
@@ -8567,15 +8557,15 @@ export namespace Prisma {
 
   export const EbookScalarFieldEnum: {
     id: 'id',
+    pdf_name: 'pdf_name',
+    pdf_url: 'pdf_url',
+    ThumbnailId: 'ThumbnailId',
+    createdAt: 'createdAt',
+    pdf_url_createdAt: 'pdf_url_createdAt',
     book_name: 'book_name',
     writer: 'writer',
     genre: 'genre',
-    description: 'description',
-    pdf_name: 'pdf_name',
-    pdf_url: 'pdf_url',
-    pdf_url_createdAt: 'pdf_url_createdAt',
-    ThumbnailId: 'ThumbnailId',
-    createdAt: 'createdAt'
+    description: 'description'
   };
 
   export type EbookScalarFieldEnum = (typeof EbookScalarFieldEnum)[keyof typeof EbookScalarFieldEnum]
@@ -8772,10 +8762,12 @@ export namespace Prisma {
     UserMongoId?: StringFilter<"user"> | string
     isPremimum?: BoolFilter<"user"> | boolean
     premimum_expire_at?: DateTimeNullableFilter<"user"> | Date | string | null
-    subjects?: SubjectListRelationFilter
+    roll_no?: StringNullableFilter<"user"> | string | null
+    collegeId?: StringNullableFilter<"user"> | string | null
     attendances?: AttendanceListRelationFilter
     attendance?: AttendanceListRelationFilter
     pdfs?: PdfListRelationFilter
+    subjects?: SubjectListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -8791,10 +8783,12 @@ export namespace Prisma {
     UserMongoId?: SortOrder
     isPremimum?: SortOrder
     premimum_expire_at?: SortOrderInput | SortOrder
-    subjects?: subjectOrderByRelationAggregateInput
+    roll_no?: SortOrderInput | SortOrder
+    collegeId?: SortOrderInput | SortOrder
     attendances?: attendanceOrderByRelationAggregateInput
     attendance?: attendanceOrderByRelationAggregateInput
     pdfs?: pdfOrderByRelationAggregateInput
+    subjects?: subjectOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -8813,10 +8807,12 @@ export namespace Prisma {
     UserMongoId?: StringFilter<"user"> | string
     isPremimum?: BoolFilter<"user"> | boolean
     premimum_expire_at?: DateTimeNullableFilter<"user"> | Date | string | null
-    subjects?: SubjectListRelationFilter
+    roll_no?: StringNullableFilter<"user"> | string | null
+    collegeId?: StringNullableFilter<"user"> | string | null
     attendances?: AttendanceListRelationFilter
     attendance?: AttendanceListRelationFilter
     pdfs?: PdfListRelationFilter
+    subjects?: SubjectListRelationFilter
   }, "id" | "email">
 
   export type userOrderByWithAggregationInput = {
@@ -8832,6 +8828,8 @@ export namespace Prisma {
     UserMongoId?: SortOrder
     isPremimum?: SortOrder
     premimum_expire_at?: SortOrderInput | SortOrder
+    roll_no?: SortOrderInput | SortOrder
+    collegeId?: SortOrderInput | SortOrder
     _count?: userCountOrderByAggregateInput
     _avg?: userAvgOrderByAggregateInput
     _max?: userMaxOrderByAggregateInput
@@ -8855,6 +8853,8 @@ export namespace Prisma {
     UserMongoId?: StringWithAggregatesFilter<"user"> | string
     isPremimum?: BoolWithAggregatesFilter<"user"> | boolean
     premimum_expire_at?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
+    roll_no?: StringNullableWithAggregatesFilter<"user"> | string | null
+    collegeId?: StringNullableWithAggregatesFilter<"user"> | string | null
   }
 
   export type subjectWhereInput = {
@@ -8867,8 +8867,8 @@ export namespace Prisma {
     semester?: IntFilter<"subject"> | number
     department?: StringFilter<"subject"> | string
     facultyId?: IntFilter<"subject"> | number
-    faculty?: XOR<UserScalarRelationFilter, userWhereInput>
     attendances?: AttendanceListRelationFilter
+    faculty?: XOR<UserScalarRelationFilter, userWhereInput>
   }
 
   export type subjectOrderByWithRelationInput = {
@@ -8878,8 +8878,8 @@ export namespace Prisma {
     semester?: SortOrder
     department?: SortOrder
     facultyId?: SortOrder
-    faculty?: userOrderByWithRelationInput
     attendances?: attendanceOrderByRelationAggregateInput
+    faculty?: userOrderByWithRelationInput
   }
 
   export type subjectWhereUniqueInput = Prisma.AtLeast<{
@@ -8892,8 +8892,8 @@ export namespace Prisma {
     semester?: IntFilter<"subject"> | number
     department?: StringFilter<"subject"> | string
     facultyId?: IntFilter<"subject"> | number
-    faculty?: XOR<UserScalarRelationFilter, userWhereInput>
     attendances?: AttendanceListRelationFilter
+    faculty?: XOR<UserScalarRelationFilter, userWhereInput>
   }, "id">
 
   export type subjectOrderByWithAggregationInput = {
@@ -8929,9 +8929,9 @@ export namespace Prisma {
     id?: IntFilter<"attendance"> | number
     studentId?: IntFilter<"attendance"> | number
     subjectId?: IntFilter<"attendance"> | number
-    teacherId?: IntFilter<"attendance"> | number
     date?: DateTimeFilter<"attendance"> | Date | string
     is_present?: EnumStatusFilter<"attendance"> | $Enums.Status
+    teacherId?: IntFilter<"attendance"> | number
     student?: XOR<UserScalarRelationFilter, userWhereInput>
     subject?: XOR<SubjectScalarRelationFilter, subjectWhereInput>
     teacher?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -8941,9 +8941,9 @@ export namespace Prisma {
     id?: SortOrder
     studentId?: SortOrder
     subjectId?: SortOrder
-    teacherId?: SortOrder
     date?: SortOrder
     is_present?: SortOrder
+    teacherId?: SortOrder
     student?: userOrderByWithRelationInput
     subject?: subjectOrderByWithRelationInput
     teacher?: userOrderByWithRelationInput
@@ -8956,9 +8956,9 @@ export namespace Prisma {
     NOT?: attendanceWhereInput | attendanceWhereInput[]
     studentId?: IntFilter<"attendance"> | number
     subjectId?: IntFilter<"attendance"> | number
-    teacherId?: IntFilter<"attendance"> | number
     date?: DateTimeFilter<"attendance"> | Date | string
     is_present?: EnumStatusFilter<"attendance"> | $Enums.Status
+    teacherId?: IntFilter<"attendance"> | number
     student?: XOR<UserScalarRelationFilter, userWhereInput>
     subject?: XOR<SubjectScalarRelationFilter, subjectWhereInput>
     teacher?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -8968,9 +8968,9 @@ export namespace Prisma {
     id?: SortOrder
     studentId?: SortOrder
     subjectId?: SortOrder
-    teacherId?: SortOrder
     date?: SortOrder
     is_present?: SortOrder
+    teacherId?: SortOrder
     _count?: attendanceCountOrderByAggregateInput
     _avg?: attendanceAvgOrderByAggregateInput
     _max?: attendanceMaxOrderByAggregateInput
@@ -8985,9 +8985,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"attendance"> | number
     studentId?: IntWithAggregatesFilter<"attendance"> | number
     subjectId?: IntWithAggregatesFilter<"attendance"> | number
-    teacherId?: IntWithAggregatesFilter<"attendance"> | number
     date?: DateTimeWithAggregatesFilter<"attendance"> | Date | string
     is_present?: EnumStatusWithAggregatesFilter<"attendance"> | $Enums.Status
+    teacherId?: IntWithAggregatesFilter<"attendance"> | number
   }
 
   export type pdfWhereInput = {
@@ -9077,29 +9077,29 @@ export namespace Prisma {
     OR?: EbookWhereInput[]
     NOT?: EbookWhereInput | EbookWhereInput[]
     id?: IntFilter<"Ebook"> | number
+    pdf_name?: StringFilter<"Ebook"> | string
+    pdf_url?: StringNullableFilter<"Ebook"> | string | null
+    ThumbnailId?: IntFilter<"Ebook"> | number
+    createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
     book_name?: StringFilter<"Ebook"> | string
     writer?: StringFilter<"Ebook"> | string
     genre?: StringFilter<"Ebook"> | string
     description?: StringFilter<"Ebook"> | string
-    pdf_name?: StringFilter<"Ebook"> | string
-    pdf_url?: StringNullableFilter<"Ebook"> | string | null
-    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
-    ThumbnailId?: IntFilter<"Ebook"> | number
-    createdAt?: DateTimeFilter<"Ebook"> | Date | string
     pdf_thumbnail?: XOR<ThumbnailScalarRelationFilter, ThumbnailWhereInput>
   }
 
   export type EbookOrderByWithRelationInput = {
     id?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_url_createdAt?: SortOrder
     book_name?: SortOrder
     writer?: SortOrder
     genre?: SortOrder
     description?: SortOrder
-    pdf_name?: SortOrder
-    pdf_url?: SortOrderInput | SortOrder
-    pdf_url_createdAt?: SortOrder
-    ThumbnailId?: SortOrder
-    createdAt?: SortOrder
     pdf_thumbnail?: ThumbnailOrderByWithRelationInput
   }
 
@@ -9109,28 +9109,28 @@ export namespace Prisma {
     AND?: EbookWhereInput | EbookWhereInput[]
     OR?: EbookWhereInput[]
     NOT?: EbookWhereInput | EbookWhereInput[]
+    pdf_name?: StringFilter<"Ebook"> | string
+    pdf_url?: StringNullableFilter<"Ebook"> | string | null
+    createdAt?: DateTimeFilter<"Ebook"> | Date | string
+    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
     book_name?: StringFilter<"Ebook"> | string
     writer?: StringFilter<"Ebook"> | string
     genre?: StringFilter<"Ebook"> | string
     description?: StringFilter<"Ebook"> | string
-    pdf_name?: StringFilter<"Ebook"> | string
-    pdf_url?: StringNullableFilter<"Ebook"> | string | null
-    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
-    createdAt?: DateTimeFilter<"Ebook"> | Date | string
     pdf_thumbnail?: XOR<ThumbnailScalarRelationFilter, ThumbnailWhereInput>
   }, "id" | "ThumbnailId">
 
   export type EbookOrderByWithAggregationInput = {
     id?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrderInput | SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_url_createdAt?: SortOrder
     book_name?: SortOrder
     writer?: SortOrder
     genre?: SortOrder
     description?: SortOrder
-    pdf_name?: SortOrder
-    pdf_url?: SortOrderInput | SortOrder
-    pdf_url_createdAt?: SortOrder
-    ThumbnailId?: SortOrder
-    createdAt?: SortOrder
     _count?: EbookCountOrderByAggregateInput
     _avg?: EbookAvgOrderByAggregateInput
     _max?: EbookMaxOrderByAggregateInput
@@ -9143,15 +9143,15 @@ export namespace Prisma {
     OR?: EbookScalarWhereWithAggregatesInput[]
     NOT?: EbookScalarWhereWithAggregatesInput | EbookScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Ebook"> | number
+    pdf_name?: StringWithAggregatesFilter<"Ebook"> | string
+    pdf_url?: StringNullableWithAggregatesFilter<"Ebook"> | string | null
+    ThumbnailId?: IntWithAggregatesFilter<"Ebook"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
+    pdf_url_createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
     book_name?: StringWithAggregatesFilter<"Ebook"> | string
     writer?: StringWithAggregatesFilter<"Ebook"> | string
     genre?: StringWithAggregatesFilter<"Ebook"> | string
     description?: StringWithAggregatesFilter<"Ebook"> | string
-    pdf_name?: StringWithAggregatesFilter<"Ebook"> | string
-    pdf_url?: StringNullableWithAggregatesFilter<"Ebook"> | string | null
-    pdf_url_createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
-    ThumbnailId?: IntWithAggregatesFilter<"Ebook"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Ebook"> | Date | string
   }
 
   export type ThumbnailWhereInput = {
@@ -9162,7 +9162,7 @@ export namespace Prisma {
     image_url?: StringFilter<"Thumbnail"> | string
     public_id?: StringFilter<"Thumbnail"> | string
     createdAt?: DateTimeFilter<"Thumbnail"> | Date | string
-    ebooks?: EbookListRelationFilter
+    ebooks?: XOR<EbookNullableScalarRelationFilter, EbookWhereInput> | null
   }
 
   export type ThumbnailOrderByWithRelationInput = {
@@ -9170,7 +9170,7 @@ export namespace Prisma {
     image_url?: SortOrder
     public_id?: SortOrder
     createdAt?: SortOrder
-    ebooks?: EbookOrderByRelationAggregateInput
+    ebooks?: EbookOrderByWithRelationInput
   }
 
   export type ThumbnailWhereUniqueInput = Prisma.AtLeast<{
@@ -9181,7 +9181,7 @@ export namespace Prisma {
     image_url?: StringFilter<"Thumbnail"> | string
     public_id?: StringFilter<"Thumbnail"> | string
     createdAt?: DateTimeFilter<"Thumbnail"> | Date | string
-    ebooks?: EbookListRelationFilter
+    ebooks?: XOR<EbookNullableScalarRelationFilter, EbookWhereInput> | null
   }, "id">
 
   export type ThumbnailOrderByWithAggregationInput = {
@@ -9218,10 +9218,12 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
+    subjects?: subjectCreateNestedManyWithoutFacultyInput
   }
 
   export type userUncheckedCreateInput = {
@@ -9237,10 +9239,12 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
+    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
   }
 
   export type userUpdateInput = {
@@ -9255,10 +9259,12 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUpdateManyWithoutFacultyNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -9274,10 +9280,12 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
   }
 
   export type userCreateManyInput = {
@@ -9293,6 +9301,8 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
+    roll_no?: string | null
+    collegeId?: string | null
   }
 
   export type userUpdateManyMutationInput = {
@@ -9307,6 +9317,8 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type userUncheckedUpdateManyInput = {
@@ -9322,6 +9334,8 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type subjectCreateInput = {
@@ -9329,8 +9343,8 @@ export namespace Prisma {
     name: string
     semester: number
     department: string
-    faculty: userCreateNestedOneWithoutSubjectsInput
     attendances?: attendanceCreateNestedManyWithoutSubjectInput
+    faculty: userCreateNestedOneWithoutSubjectsInput
   }
 
   export type subjectUncheckedCreateInput = {
@@ -9348,8 +9362,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     semester?: IntFieldUpdateOperationsInput | number
     department?: StringFieldUpdateOperationsInput | string
-    faculty?: userUpdateOneRequiredWithoutSubjectsNestedInput
     attendances?: attendanceUpdateManyWithoutSubjectNestedInput
+    faculty?: userUpdateOneRequiredWithoutSubjectsNestedInput
   }
 
   export type subjectUncheckedUpdateInput = {
@@ -9399,9 +9413,9 @@ export namespace Prisma {
     id?: number
     studentId: number
     subjectId: number
-    teacherId: number
     date: Date | string
     is_present: $Enums.Status
+    teacherId: number
   }
 
   export type attendanceUpdateInput = {
@@ -9416,18 +9430,18 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: IntFieldUpdateOperationsInput | number
     subjectId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type attendanceCreateManyInput = {
     id?: number
     studentId: number
     subjectId: number
-    teacherId: number
     date: Date | string
     is_present: $Enums.Status
+    teacherId: number
   }
 
   export type attendanceUpdateManyMutationInput = {
@@ -9439,9 +9453,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: IntFieldUpdateOperationsInput | number
     subjectId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type pdfCreateInput = {
@@ -9532,97 +9546,97 @@ export namespace Prisma {
   }
 
   export type EbookCreateInput = {
+    pdf_name: string
+    pdf_url?: string | null
+    createdAt?: Date | string
+    pdf_url_createdAt: Date | string
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    createdAt?: Date | string
     pdf_thumbnail: ThumbnailCreateNestedOneWithoutEbooksInput
   }
 
   export type EbookUncheckedCreateInput = {
     id?: number
+    pdf_name: string
+    pdf_url?: string | null
+    ThumbnailId: number
+    createdAt?: Date | string
+    pdf_url_createdAt: Date | string
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    ThumbnailId: number
-    createdAt?: Date | string
   }
 
   export type EbookUpdateInput = {
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     book_name?: StringFieldUpdateOperationsInput | string
     writer?: StringFieldUpdateOperationsInput | string
     genre?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pdf_thumbnail?: ThumbnailUpdateOneRequiredWithoutEbooksNestedInput
   }
 
   export type EbookUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    ThumbnailId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     book_name?: StringFieldUpdateOperationsInput | string
     writer?: StringFieldUpdateOperationsInput | string
     genre?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ThumbnailId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EbookCreateManyInput = {
     id?: number
+    pdf_name: string
+    pdf_url?: string | null
+    ThumbnailId: number
+    createdAt?: Date | string
+    pdf_url_createdAt: Date | string
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    ThumbnailId: number
-    createdAt?: Date | string
   }
 
   export type EbookUpdateManyMutationInput = {
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     book_name?: StringFieldUpdateOperationsInput | string
     writer?: StringFieldUpdateOperationsInput | string
     genre?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EbookUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    ThumbnailId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     book_name?: StringFieldUpdateOperationsInput | string
     writer?: StringFieldUpdateOperationsInput | string
     genre?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ThumbnailId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ThumbnailCreateInput = {
     image_url: string
     public_id: string
     createdAt?: Date | string
-    ebooks?: EbookCreateNestedManyWithoutPdf_thumbnailInput
+    ebooks?: EbookCreateNestedOneWithoutPdf_thumbnailInput
   }
 
   export type ThumbnailUncheckedCreateInput = {
@@ -9630,14 +9644,14 @@ export namespace Prisma {
     image_url: string
     public_id: string
     createdAt?: Date | string
-    ebooks?: EbookUncheckedCreateNestedManyWithoutPdf_thumbnailInput
+    ebooks?: EbookUncheckedCreateNestedOneWithoutPdf_thumbnailInput
   }
 
   export type ThumbnailUpdateInput = {
     image_url?: StringFieldUpdateOperationsInput | string
     public_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ebooks?: EbookUpdateManyWithoutPdf_thumbnailNestedInput
+    ebooks?: EbookUpdateOneWithoutPdf_thumbnailNestedInput
   }
 
   export type ThumbnailUncheckedUpdateInput = {
@@ -9645,7 +9659,7 @@ export namespace Prisma {
     image_url?: StringFieldUpdateOperationsInput | string
     public_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ebooks?: EbookUncheckedUpdateManyWithoutPdf_thumbnailNestedInput
+    ebooks?: EbookUncheckedUpdateOneWithoutPdf_thumbnailNestedInput
   }
 
   export type ThumbnailCreateManyInput = {
@@ -9743,12 +9757,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type SubjectListRelationFilter = {
-    every?: subjectWhereInput
-    some?: subjectWhereInput
-    none?: subjectWhereInput
-  }
-
   export type AttendanceListRelationFilter = {
     every?: attendanceWhereInput
     some?: attendanceWhereInput
@@ -9761,13 +9769,15 @@ export namespace Prisma {
     none?: pdfWhereInput
   }
 
+  export type SubjectListRelationFilter = {
+    every?: subjectWhereInput
+    some?: subjectWhereInput
+    none?: subjectWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type subjectOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type attendanceOrderByRelationAggregateInput = {
@@ -9775,6 +9785,10 @@ export namespace Prisma {
   }
 
   export type pdfOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type subjectOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9791,6 +9805,8 @@ export namespace Prisma {
     UserMongoId?: SortOrder
     isPremimum?: SortOrder
     premimum_expire_at?: SortOrder
+    roll_no?: SortOrder
+    collegeId?: SortOrder
   }
 
   export type userAvgOrderByAggregateInput = {
@@ -9811,6 +9827,8 @@ export namespace Prisma {
     UserMongoId?: SortOrder
     isPremimum?: SortOrder
     premimum_expire_at?: SortOrder
+    roll_no?: SortOrder
+    collegeId?: SortOrder
   }
 
   export type userMinOrderByAggregateInput = {
@@ -9826,6 +9844,8 @@ export namespace Prisma {
     UserMongoId?: SortOrder
     isPremimum?: SortOrder
     premimum_expire_at?: SortOrder
+    roll_no?: SortOrder
+    collegeId?: SortOrder
   }
 
   export type userSumOrderByAggregateInput = {
@@ -10004,9 +10024,9 @@ export namespace Prisma {
     id?: SortOrder
     studentId?: SortOrder
     subjectId?: SortOrder
-    teacherId?: SortOrder
     date?: SortOrder
     is_present?: SortOrder
+    teacherId?: SortOrder
   }
 
   export type attendanceAvgOrderByAggregateInput = {
@@ -10020,18 +10040,18 @@ export namespace Prisma {
     id?: SortOrder
     studentId?: SortOrder
     subjectId?: SortOrder
-    teacherId?: SortOrder
     date?: SortOrder
     is_present?: SortOrder
+    teacherId?: SortOrder
   }
 
   export type attendanceMinOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     subjectId?: SortOrder
-    teacherId?: SortOrder
     date?: SortOrder
     is_present?: SortOrder
+    teacherId?: SortOrder
   }
 
   export type attendanceSumOrderByAggregateInput = {
@@ -10174,15 +10194,15 @@ export namespace Prisma {
 
   export type EbookCountOrderByAggregateInput = {
     id?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_url_createdAt?: SortOrder
     book_name?: SortOrder
     writer?: SortOrder
     genre?: SortOrder
     description?: SortOrder
-    pdf_name?: SortOrder
-    pdf_url?: SortOrder
-    pdf_url_createdAt?: SortOrder
-    ThumbnailId?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type EbookAvgOrderByAggregateInput = {
@@ -10192,28 +10212,28 @@ export namespace Prisma {
 
   export type EbookMaxOrderByAggregateInput = {
     id?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_url_createdAt?: SortOrder
     book_name?: SortOrder
     writer?: SortOrder
     genre?: SortOrder
     description?: SortOrder
-    pdf_name?: SortOrder
-    pdf_url?: SortOrder
-    pdf_url_createdAt?: SortOrder
-    ThumbnailId?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type EbookMinOrderByAggregateInput = {
     id?: SortOrder
+    pdf_name?: SortOrder
+    pdf_url?: SortOrder
+    ThumbnailId?: SortOrder
+    createdAt?: SortOrder
+    pdf_url_createdAt?: SortOrder
     book_name?: SortOrder
     writer?: SortOrder
     genre?: SortOrder
     description?: SortOrder
-    pdf_name?: SortOrder
-    pdf_url?: SortOrder
-    pdf_url_createdAt?: SortOrder
-    ThumbnailId?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type EbookSumOrderByAggregateInput = {
@@ -10221,14 +10241,9 @@ export namespace Prisma {
     ThumbnailId?: SortOrder
   }
 
-  export type EbookListRelationFilter = {
-    every?: EbookWhereInput
-    some?: EbookWhereInput
-    none?: EbookWhereInput
-  }
-
-  export type EbookOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type EbookNullableScalarRelationFilter = {
+    is?: EbookWhereInput | null
+    isNot?: EbookWhereInput | null
   }
 
   export type ThumbnailCountOrderByAggregateInput = {
@@ -10260,13 +10275,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type subjectCreateNestedManyWithoutFacultyInput = {
-    create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
-    connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
-    createMany?: subjectCreateManyFacultyInputEnvelope
-    connect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
-  }
-
   export type attendanceCreateNestedManyWithoutStudentInput = {
     create?: XOR<attendanceCreateWithoutStudentInput, attendanceUncheckedCreateWithoutStudentInput> | attendanceCreateWithoutStudentInput[] | attendanceUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: attendanceCreateOrConnectWithoutStudentInput | attendanceCreateOrConnectWithoutStudentInput[]
@@ -10288,7 +10296,7 @@ export namespace Prisma {
     connect?: pdfWhereUniqueInput | pdfWhereUniqueInput[]
   }
 
-  export type subjectUncheckedCreateNestedManyWithoutFacultyInput = {
+  export type subjectCreateNestedManyWithoutFacultyInput = {
     create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
     connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
     createMany?: subjectCreateManyFacultyInputEnvelope
@@ -10314,6 +10322,13 @@ export namespace Prisma {
     connectOrCreate?: pdfCreateOrConnectWithoutPosterInput | pdfCreateOrConnectWithoutPosterInput[]
     createMany?: pdfCreateManyPosterInputEnvelope
     connect?: pdfWhereUniqueInput | pdfWhereUniqueInput[]
+  }
+
+  export type subjectUncheckedCreateNestedManyWithoutFacultyInput = {
+    create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
+    connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
+    createMany?: subjectCreateManyFacultyInputEnvelope
+    connect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10342,20 +10357,6 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type subjectUpdateManyWithoutFacultyNestedInput = {
-    create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
-    connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
-    upsert?: subjectUpsertWithWhereUniqueWithoutFacultyInput | subjectUpsertWithWhereUniqueWithoutFacultyInput[]
-    createMany?: subjectCreateManyFacultyInputEnvelope
-    set?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
-    disconnect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
-    delete?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
-    connect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
-    update?: subjectUpdateWithWhereUniqueWithoutFacultyInput | subjectUpdateWithWhereUniqueWithoutFacultyInput[]
-    updateMany?: subjectUpdateManyWithWhereWithoutFacultyInput | subjectUpdateManyWithWhereWithoutFacultyInput[]
-    deleteMany?: subjectScalarWhereInput | subjectScalarWhereInput[]
   }
 
   export type attendanceUpdateManyWithoutStudentNestedInput = {
@@ -10400,15 +10401,7 @@ export namespace Prisma {
     deleteMany?: pdfScalarWhereInput | pdfScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type subjectUncheckedUpdateManyWithoutFacultyNestedInput = {
+  export type subjectUpdateManyWithoutFacultyNestedInput = {
     create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
     connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
     upsert?: subjectUpsertWithWhereUniqueWithoutFacultyInput | subjectUpsertWithWhereUniqueWithoutFacultyInput[]
@@ -10420,6 +10413,14 @@ export namespace Prisma {
     update?: subjectUpdateWithWhereUniqueWithoutFacultyInput | subjectUpdateWithWhereUniqueWithoutFacultyInput[]
     updateMany?: subjectUpdateManyWithWhereWithoutFacultyInput | subjectUpdateManyWithWhereWithoutFacultyInput[]
     deleteMany?: subjectScalarWhereInput | subjectScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type attendanceUncheckedUpdateManyWithoutStudentNestedInput = {
@@ -10464,10 +10465,18 @@ export namespace Prisma {
     deleteMany?: pdfScalarWhereInput | pdfScalarWhereInput[]
   }
 
-  export type userCreateNestedOneWithoutSubjectsInput = {
-    create?: XOR<userCreateWithoutSubjectsInput, userUncheckedCreateWithoutSubjectsInput>
-    connectOrCreate?: userCreateOrConnectWithoutSubjectsInput
-    connect?: userWhereUniqueInput
+  export type subjectUncheckedUpdateManyWithoutFacultyNestedInput = {
+    create?: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput> | subjectCreateWithoutFacultyInput[] | subjectUncheckedCreateWithoutFacultyInput[]
+    connectOrCreate?: subjectCreateOrConnectWithoutFacultyInput | subjectCreateOrConnectWithoutFacultyInput[]
+    upsert?: subjectUpsertWithWhereUniqueWithoutFacultyInput | subjectUpsertWithWhereUniqueWithoutFacultyInput[]
+    createMany?: subjectCreateManyFacultyInputEnvelope
+    set?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
+    disconnect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
+    delete?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
+    connect?: subjectWhereUniqueInput | subjectWhereUniqueInput[]
+    update?: subjectUpdateWithWhereUniqueWithoutFacultyInput | subjectUpdateWithWhereUniqueWithoutFacultyInput[]
+    updateMany?: subjectUpdateManyWithWhereWithoutFacultyInput | subjectUpdateManyWithWhereWithoutFacultyInput[]
+    deleteMany?: subjectScalarWhereInput | subjectScalarWhereInput[]
   }
 
   export type attendanceCreateNestedManyWithoutSubjectInput = {
@@ -10477,19 +10486,17 @@ export namespace Prisma {
     connect?: attendanceWhereUniqueInput | attendanceWhereUniqueInput[]
   }
 
+  export type userCreateNestedOneWithoutSubjectsInput = {
+    create?: XOR<userCreateWithoutSubjectsInput, userUncheckedCreateWithoutSubjectsInput>
+    connectOrCreate?: userCreateOrConnectWithoutSubjectsInput
+    connect?: userWhereUniqueInput
+  }
+
   export type attendanceUncheckedCreateNestedManyWithoutSubjectInput = {
     create?: XOR<attendanceCreateWithoutSubjectInput, attendanceUncheckedCreateWithoutSubjectInput> | attendanceCreateWithoutSubjectInput[] | attendanceUncheckedCreateWithoutSubjectInput[]
     connectOrCreate?: attendanceCreateOrConnectWithoutSubjectInput | attendanceCreateOrConnectWithoutSubjectInput[]
     createMany?: attendanceCreateManySubjectInputEnvelope
     connect?: attendanceWhereUniqueInput | attendanceWhereUniqueInput[]
-  }
-
-  export type userUpdateOneRequiredWithoutSubjectsNestedInput = {
-    create?: XOR<userCreateWithoutSubjectsInput, userUncheckedCreateWithoutSubjectsInput>
-    connectOrCreate?: userCreateOrConnectWithoutSubjectsInput
-    upsert?: userUpsertWithoutSubjectsInput
-    connect?: userWhereUniqueInput
-    update?: XOR<XOR<userUpdateToOneWithWhereWithoutSubjectsInput, userUpdateWithoutSubjectsInput>, userUncheckedUpdateWithoutSubjectsInput>
   }
 
   export type attendanceUpdateManyWithoutSubjectNestedInput = {
@@ -10504,6 +10511,14 @@ export namespace Prisma {
     update?: attendanceUpdateWithWhereUniqueWithoutSubjectInput | attendanceUpdateWithWhereUniqueWithoutSubjectInput[]
     updateMany?: attendanceUpdateManyWithWhereWithoutSubjectInput | attendanceUpdateManyWithWhereWithoutSubjectInput[]
     deleteMany?: attendanceScalarWhereInput | attendanceScalarWhereInput[]
+  }
+
+  export type userUpdateOneRequiredWithoutSubjectsNestedInput = {
+    create?: XOR<userCreateWithoutSubjectsInput, userUncheckedCreateWithoutSubjectsInput>
+    connectOrCreate?: userCreateOrConnectWithoutSubjectsInput
+    upsert?: userUpsertWithoutSubjectsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutSubjectsInput, userUpdateWithoutSubjectsInput>, userUncheckedUpdateWithoutSubjectsInput>
   }
 
   export type attendanceUncheckedUpdateManyWithoutSubjectNestedInput = {
@@ -10610,46 +10625,36 @@ export namespace Prisma {
     update?: XOR<XOR<ThumbnailUpdateToOneWithWhereWithoutEbooksInput, ThumbnailUpdateWithoutEbooksInput>, ThumbnailUncheckedUpdateWithoutEbooksInput>
   }
 
-  export type EbookCreateNestedManyWithoutPdf_thumbnailInput = {
-    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
-    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
-    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
-    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+  export type EbookCreateNestedOneWithoutPdf_thumbnailInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput
+    connect?: EbookWhereUniqueInput
   }
 
-  export type EbookUncheckedCreateNestedManyWithoutPdf_thumbnailInput = {
-    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
-    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
-    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
-    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
+  export type EbookUncheckedCreateNestedOneWithoutPdf_thumbnailInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput
+    connect?: EbookWhereUniqueInput
   }
 
-  export type EbookUpdateManyWithoutPdf_thumbnailNestedInput = {
-    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
-    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
-    upsert?: EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput[]
-    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
-    set?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    disconnect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    delete?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    update?: EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput[]
-    updateMany?: EbookUpdateManyWithWhereWithoutPdf_thumbnailInput | EbookUpdateManyWithWhereWithoutPdf_thumbnailInput[]
-    deleteMany?: EbookScalarWhereInput | EbookScalarWhereInput[]
+  export type EbookUpdateOneWithoutPdf_thumbnailNestedInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput
+    upsert?: EbookUpsertWithoutPdf_thumbnailInput
+    disconnect?: EbookWhereInput | boolean
+    delete?: EbookWhereInput | boolean
+    connect?: EbookWhereUniqueInput
+    update?: XOR<XOR<EbookUpdateToOneWithWhereWithoutPdf_thumbnailInput, EbookUpdateWithoutPdf_thumbnailInput>, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
   }
 
-  export type EbookUncheckedUpdateManyWithoutPdf_thumbnailNestedInput = {
-    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput> | EbookCreateWithoutPdf_thumbnailInput[] | EbookUncheckedCreateWithoutPdf_thumbnailInput[]
-    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput | EbookCreateOrConnectWithoutPdf_thumbnailInput[]
-    upsert?: EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput[]
-    createMany?: EbookCreateManyPdf_thumbnailInputEnvelope
-    set?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    disconnect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    delete?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    connect?: EbookWhereUniqueInput | EbookWhereUniqueInput[]
-    update?: EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput | EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput[]
-    updateMany?: EbookUpdateManyWithWhereWithoutPdf_thumbnailInput | EbookUpdateManyWithWhereWithoutPdf_thumbnailInput[]
-    deleteMany?: EbookScalarWhereInput | EbookScalarWhereInput[]
+  export type EbookUncheckedUpdateOneWithoutPdf_thumbnailNestedInput = {
+    create?: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+    connectOrCreate?: EbookCreateOrConnectWithoutPdf_thumbnailInput
+    upsert?: EbookUpsertWithoutPdf_thumbnailInput
+    disconnect?: EbookWhereInput | boolean
+    delete?: EbookWhereInput | boolean
+    connect?: EbookWhereUniqueInput
+    update?: XOR<XOR<EbookUpdateToOneWithWhereWithoutPdf_thumbnailInput, EbookUpdateWithoutPdf_thumbnailInput>, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10938,33 +10943,6 @@ export namespace Prisma {
     _max?: NestedEnumpaper_typeNullableFilter<$PrismaModel>
   }
 
-  export type subjectCreateWithoutFacultyInput = {
-    code: string
-    name: string
-    semester: number
-    department: string
-    attendances?: attendanceCreateNestedManyWithoutSubjectInput
-  }
-
-  export type subjectUncheckedCreateWithoutFacultyInput = {
-    id?: number
-    code: string
-    name: string
-    semester: number
-    department: string
-    attendances?: attendanceUncheckedCreateNestedManyWithoutSubjectInput
-  }
-
-  export type subjectCreateOrConnectWithoutFacultyInput = {
-    where: subjectWhereUniqueInput
-    create: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput>
-  }
-
-  export type subjectCreateManyFacultyInputEnvelope = {
-    data: subjectCreateManyFacultyInput | subjectCreateManyFacultyInput[]
-    skipDuplicates?: boolean
-  }
-
   export type attendanceCreateWithoutStudentInput = {
     date: Date | string
     is_present: $Enums.Status
@@ -10975,9 +10953,9 @@ export namespace Prisma {
   export type attendanceUncheckedCreateWithoutStudentInput = {
     id?: number
     subjectId: number
-    teacherId: number
     date: Date | string
     is_present: $Enums.Status
+    teacherId: number
   }
 
   export type attendanceCreateOrConnectWithoutStudentInput = {
@@ -11048,32 +11026,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type subjectUpsertWithWhereUniqueWithoutFacultyInput = {
+  export type subjectCreateWithoutFacultyInput = {
+    code: string
+    name: string
+    semester: number
+    department: string
+    attendances?: attendanceCreateNestedManyWithoutSubjectInput
+  }
+
+  export type subjectUncheckedCreateWithoutFacultyInput = {
+    id?: number
+    code: string
+    name: string
+    semester: number
+    department: string
+    attendances?: attendanceUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type subjectCreateOrConnectWithoutFacultyInput = {
     where: subjectWhereUniqueInput
-    update: XOR<subjectUpdateWithoutFacultyInput, subjectUncheckedUpdateWithoutFacultyInput>
     create: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput>
   }
 
-  export type subjectUpdateWithWhereUniqueWithoutFacultyInput = {
-    where: subjectWhereUniqueInput
-    data: XOR<subjectUpdateWithoutFacultyInput, subjectUncheckedUpdateWithoutFacultyInput>
-  }
-
-  export type subjectUpdateManyWithWhereWithoutFacultyInput = {
-    where: subjectScalarWhereInput
-    data: XOR<subjectUpdateManyMutationInput, subjectUncheckedUpdateManyWithoutFacultyInput>
-  }
-
-  export type subjectScalarWhereInput = {
-    AND?: subjectScalarWhereInput | subjectScalarWhereInput[]
-    OR?: subjectScalarWhereInput[]
-    NOT?: subjectScalarWhereInput | subjectScalarWhereInput[]
-    id?: IntFilter<"subject"> | number
-    code?: StringFilter<"subject"> | string
-    name?: StringFilter<"subject"> | string
-    semester?: IntFilter<"subject"> | number
-    department?: StringFilter<"subject"> | string
-    facultyId?: IntFilter<"subject"> | number
+  export type subjectCreateManyFacultyInputEnvelope = {
+    data: subjectCreateManyFacultyInput | subjectCreateManyFacultyInput[]
+    skipDuplicates?: boolean
   }
 
   export type attendanceUpsertWithWhereUniqueWithoutStudentInput = {
@@ -11099,9 +11076,9 @@ export namespace Prisma {
     id?: IntFilter<"attendance"> | number
     studentId?: IntFilter<"attendance"> | number
     subjectId?: IntFilter<"attendance"> | number
-    teacherId?: IntFilter<"attendance"> | number
     date?: DateTimeFilter<"attendance"> | Date | string
     is_present?: EnumStatusFilter<"attendance"> | $Enums.Status
+    teacherId?: IntFilter<"attendance"> | number
   }
 
   export type attendanceUpsertWithWhereUniqueWithoutTeacherInput = {
@@ -11152,6 +11129,59 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"pdf"> | Date | string
   }
 
+  export type subjectUpsertWithWhereUniqueWithoutFacultyInput = {
+    where: subjectWhereUniqueInput
+    update: XOR<subjectUpdateWithoutFacultyInput, subjectUncheckedUpdateWithoutFacultyInput>
+    create: XOR<subjectCreateWithoutFacultyInput, subjectUncheckedCreateWithoutFacultyInput>
+  }
+
+  export type subjectUpdateWithWhereUniqueWithoutFacultyInput = {
+    where: subjectWhereUniqueInput
+    data: XOR<subjectUpdateWithoutFacultyInput, subjectUncheckedUpdateWithoutFacultyInput>
+  }
+
+  export type subjectUpdateManyWithWhereWithoutFacultyInput = {
+    where: subjectScalarWhereInput
+    data: XOR<subjectUpdateManyMutationInput, subjectUncheckedUpdateManyWithoutFacultyInput>
+  }
+
+  export type subjectScalarWhereInput = {
+    AND?: subjectScalarWhereInput | subjectScalarWhereInput[]
+    OR?: subjectScalarWhereInput[]
+    NOT?: subjectScalarWhereInput | subjectScalarWhereInput[]
+    id?: IntFilter<"subject"> | number
+    code?: StringFilter<"subject"> | string
+    name?: StringFilter<"subject"> | string
+    semester?: IntFilter<"subject"> | number
+    department?: StringFilter<"subject"> | string
+    facultyId?: IntFilter<"subject"> | number
+  }
+
+  export type attendanceCreateWithoutSubjectInput = {
+    date: Date | string
+    is_present: $Enums.Status
+    student: userCreateNestedOneWithoutAttendancesInput
+    teacher: userCreateNestedOneWithoutAttendanceInput
+  }
+
+  export type attendanceUncheckedCreateWithoutSubjectInput = {
+    id?: number
+    studentId: number
+    date: Date | string
+    is_present: $Enums.Status
+    teacherId: number
+  }
+
+  export type attendanceCreateOrConnectWithoutSubjectInput = {
+    where: attendanceWhereUniqueInput
+    create: XOR<attendanceCreateWithoutSubjectInput, attendanceUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type attendanceCreateManySubjectInputEnvelope = {
+    data: attendanceCreateManySubjectInput | attendanceCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userCreateWithoutSubjectsInput = {
     name: string
     profile_pic?: string | null
@@ -11164,6 +11194,8 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
@@ -11182,6 +11214,8 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
@@ -11192,29 +11226,20 @@ export namespace Prisma {
     create: XOR<userCreateWithoutSubjectsInput, userUncheckedCreateWithoutSubjectsInput>
   }
 
-  export type attendanceCreateWithoutSubjectInput = {
-    date: Date | string
-    is_present: $Enums.Status
-    student: userCreateNestedOneWithoutAttendancesInput
-    teacher: userCreateNestedOneWithoutAttendanceInput
-  }
-
-  export type attendanceUncheckedCreateWithoutSubjectInput = {
-    id?: number
-    studentId: number
-    teacherId: number
-    date: Date | string
-    is_present: $Enums.Status
-  }
-
-  export type attendanceCreateOrConnectWithoutSubjectInput = {
+  export type attendanceUpsertWithWhereUniqueWithoutSubjectInput = {
     where: attendanceWhereUniqueInput
+    update: XOR<attendanceUpdateWithoutSubjectInput, attendanceUncheckedUpdateWithoutSubjectInput>
     create: XOR<attendanceCreateWithoutSubjectInput, attendanceUncheckedCreateWithoutSubjectInput>
   }
 
-  export type attendanceCreateManySubjectInputEnvelope = {
-    data: attendanceCreateManySubjectInput | attendanceCreateManySubjectInput[]
-    skipDuplicates?: boolean
+  export type attendanceUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: attendanceWhereUniqueInput
+    data: XOR<attendanceUpdateWithoutSubjectInput, attendanceUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type attendanceUpdateManyWithWhereWithoutSubjectInput = {
+    where: attendanceScalarWhereInput
+    data: XOR<attendanceUpdateManyMutationInput, attendanceUncheckedUpdateManyWithoutSubjectInput>
   }
 
   export type userUpsertWithoutSubjectsInput = {
@@ -11240,6 +11265,8 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
@@ -11258,25 +11285,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
-  }
-
-  export type attendanceUpsertWithWhereUniqueWithoutSubjectInput = {
-    where: attendanceWhereUniqueInput
-    update: XOR<attendanceUpdateWithoutSubjectInput, attendanceUncheckedUpdateWithoutSubjectInput>
-    create: XOR<attendanceCreateWithoutSubjectInput, attendanceUncheckedCreateWithoutSubjectInput>
-  }
-
-  export type attendanceUpdateWithWhereUniqueWithoutSubjectInput = {
-    where: attendanceWhereUniqueInput
-    data: XOR<attendanceUpdateWithoutSubjectInput, attendanceUncheckedUpdateWithoutSubjectInput>
-  }
-
-  export type attendanceUpdateManyWithWhereWithoutSubjectInput = {
-    where: attendanceScalarWhereInput
-    data: XOR<attendanceUpdateManyMutationInput, attendanceUncheckedUpdateManyWithoutSubjectInput>
   }
 
   export type userCreateWithoutAttendancesInput = {
@@ -11291,9 +11304,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
+    subjects?: subjectCreateNestedManyWithoutFacultyInput
   }
 
   export type userUncheckedCreateWithoutAttendancesInput = {
@@ -11309,9 +11324,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
+    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
   }
 
   export type userCreateOrConnectWithoutAttendancesInput = {
@@ -11353,9 +11370,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     pdfs?: pdfCreateNestedManyWithoutPosterInput
+    subjects?: subjectCreateNestedManyWithoutFacultyInput
   }
 
   export type userUncheckedCreateWithoutAttendanceInput = {
@@ -11371,9 +11390,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     pdfs?: pdfUncheckedCreateNestedManyWithoutPosterInput
+    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
   }
 
   export type userCreateOrConnectWithoutAttendanceInput = {
@@ -11404,9 +11425,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUpdateManyWithoutFacultyNestedInput
   }
 
   export type userUncheckedUpdateWithoutAttendancesInput = {
@@ -11422,9 +11445,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
   }
 
   export type subjectUpsertWithoutAttendancesInput = {
@@ -11478,9 +11503,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     pdfs?: pdfUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUpdateManyWithoutFacultyNestedInput
   }
 
   export type userUncheckedUpdateWithoutAttendanceInput = {
@@ -11496,9 +11523,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     pdfs?: pdfUncheckedUpdateManyWithoutPosterNestedInput
+    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
   }
 
   export type userCreateWithoutPdfsInput = {
@@ -11513,9 +11542,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceCreateNestedManyWithoutStudentInput
     attendance?: attendanceCreateNestedManyWithoutTeacherInput
+    subjects?: subjectCreateNestedManyWithoutFacultyInput
   }
 
   export type userUncheckedCreateWithoutPdfsInput = {
@@ -11531,9 +11562,11 @@ export namespace Prisma {
     UserMongoId: string
     isPremimum?: boolean
     premimum_expire_at?: Date | string | null
-    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
+    roll_no?: string | null
+    collegeId?: string | null
     attendances?: attendanceUncheckedCreateNestedManyWithoutStudentInput
     attendance?: attendanceUncheckedCreateNestedManyWithoutTeacherInput
+    subjects?: subjectUncheckedCreateNestedManyWithoutFacultyInput
   }
 
   export type userCreateOrConnectWithoutPdfsInput = {
@@ -11564,9 +11597,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUpdateManyWithoutTeacherNestedInput
+    subjects?: subjectUpdateManyWithoutFacultyNestedInput
   }
 
   export type userUncheckedUpdateWithoutPdfsInput = {
@@ -11582,9 +11617,11 @@ export namespace Prisma {
     UserMongoId?: StringFieldUpdateOperationsInput | string
     isPremimum?: BoolFieldUpdateOperationsInput | boolean
     premimum_expire_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
+    roll_no?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeId?: NullableStringFieldUpdateOperationsInput | string | null
     attendances?: attendanceUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: attendanceUncheckedUpdateManyWithoutTeacherNestedInput
+    subjects?: subjectUncheckedUpdateManyWithoutFacultyNestedInput
   }
 
   export type ThumbnailCreateWithoutEbooksInput = {
@@ -11630,26 +11667,26 @@ export namespace Prisma {
   }
 
   export type EbookCreateWithoutPdf_thumbnailInput = {
+    pdf_name: string
+    pdf_url?: string | null
+    createdAt?: Date | string
+    pdf_url_createdAt: Date | string
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    createdAt?: Date | string
   }
 
   export type EbookUncheckedCreateWithoutPdf_thumbnailInput = {
     id?: number
+    pdf_name: string
+    pdf_url?: string | null
+    createdAt?: Date | string
+    pdf_url_createdAt: Date | string
     book_name: string
     writer: string
     genre: string
     description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    createdAt?: Date | string
   }
 
   export type EbookCreateOrConnectWithoutPdf_thumbnailInput = {
@@ -11657,57 +11694,46 @@ export namespace Prisma {
     create: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
   }
 
-  export type EbookCreateManyPdf_thumbnailInputEnvelope = {
-    data: EbookCreateManyPdf_thumbnailInput | EbookCreateManyPdf_thumbnailInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type EbookUpsertWithWhereUniqueWithoutPdf_thumbnailInput = {
-    where: EbookWhereUniqueInput
+  export type EbookUpsertWithoutPdf_thumbnailInput = {
     update: XOR<EbookUpdateWithoutPdf_thumbnailInput, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
     create: XOR<EbookCreateWithoutPdf_thumbnailInput, EbookUncheckedCreateWithoutPdf_thumbnailInput>
+    where?: EbookWhereInput
   }
 
-  export type EbookUpdateWithWhereUniqueWithoutPdf_thumbnailInput = {
-    where: EbookWhereUniqueInput
+  export type EbookUpdateToOneWithWhereWithoutPdf_thumbnailInput = {
+    where?: EbookWhereInput
     data: XOR<EbookUpdateWithoutPdf_thumbnailInput, EbookUncheckedUpdateWithoutPdf_thumbnailInput>
   }
 
-  export type EbookUpdateManyWithWhereWithoutPdf_thumbnailInput = {
-    where: EbookScalarWhereInput
-    data: XOR<EbookUpdateManyMutationInput, EbookUncheckedUpdateManyWithoutPdf_thumbnailInput>
+  export type EbookUpdateWithoutPdf_thumbnailInput = {
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
-  export type EbookScalarWhereInput = {
-    AND?: EbookScalarWhereInput | EbookScalarWhereInput[]
-    OR?: EbookScalarWhereInput[]
-    NOT?: EbookScalarWhereInput | EbookScalarWhereInput[]
-    id?: IntFilter<"Ebook"> | number
-    book_name?: StringFilter<"Ebook"> | string
-    writer?: StringFilter<"Ebook"> | string
-    genre?: StringFilter<"Ebook"> | string
-    description?: StringFilter<"Ebook"> | string
-    pdf_name?: StringFilter<"Ebook"> | string
-    pdf_url?: StringNullableFilter<"Ebook"> | string | null
-    pdf_url_createdAt?: DateTimeFilter<"Ebook"> | Date | string
-    ThumbnailId?: IntFilter<"Ebook"> | number
-    createdAt?: DateTimeFilter<"Ebook"> | Date | string
-  }
-
-  export type subjectCreateManyFacultyInput = {
-    id?: number
-    code: string
-    name: string
-    semester: number
-    department: string
+  export type EbookUncheckedUpdateWithoutPdf_thumbnailInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    pdf_name?: StringFieldUpdateOperationsInput | string
+    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_name?: StringFieldUpdateOperationsInput | string
+    writer?: StringFieldUpdateOperationsInput | string
+    genre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
   }
 
   export type attendanceCreateManyStudentInput = {
     id?: number
     subjectId: number
-    teacherId: number
     date: Date | string
     is_present: $Enums.Status
+    teacherId: number
   }
 
   export type attendanceCreateManyTeacherInput = {
@@ -11730,29 +11756,12 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type subjectUpdateWithoutFacultyInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    semester?: IntFieldUpdateOperationsInput | number
-    department?: StringFieldUpdateOperationsInput | string
-    attendances?: attendanceUpdateManyWithoutSubjectNestedInput
-  }
-
-  export type subjectUncheckedUpdateWithoutFacultyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    code?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    semester?: IntFieldUpdateOperationsInput | number
-    department?: StringFieldUpdateOperationsInput | string
-    attendances?: attendanceUncheckedUpdateManyWithoutSubjectNestedInput
-  }
-
-  export type subjectUncheckedUpdateManyWithoutFacultyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    code?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    semester?: IntFieldUpdateOperationsInput | number
-    department?: StringFieldUpdateOperationsInput | string
+  export type subjectCreateManyFacultyInput = {
+    id?: number
+    code: string
+    name: string
+    semester: number
+    department: string
   }
 
   export type attendanceUpdateWithoutStudentInput = {
@@ -11765,17 +11774,17 @@ export namespace Prisma {
   export type attendanceUncheckedUpdateWithoutStudentInput = {
     id?: IntFieldUpdateOperationsInput | number
     subjectId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type attendanceUncheckedUpdateManyWithoutStudentInput = {
     id?: IntFieldUpdateOperationsInput | number
     subjectId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type attendanceUpdateWithoutTeacherInput = {
@@ -11836,12 +11845,37 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type subjectUpdateWithoutFacultyInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    semester?: IntFieldUpdateOperationsInput | number
+    department?: StringFieldUpdateOperationsInput | string
+    attendances?: attendanceUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type subjectUncheckedUpdateWithoutFacultyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    semester?: IntFieldUpdateOperationsInput | number
+    department?: StringFieldUpdateOperationsInput | string
+    attendances?: attendanceUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type subjectUncheckedUpdateManyWithoutFacultyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    semester?: IntFieldUpdateOperationsInput | number
+    department?: StringFieldUpdateOperationsInput | string
+  }
+
   export type attendanceCreateManySubjectInput = {
     id?: number
     studentId: number
-    teacherId: number
     date: Date | string
     is_present: $Enums.Status
+    teacherId: number
   }
 
   export type attendanceUpdateWithoutSubjectInput = {
@@ -11854,64 +11888,17 @@ export namespace Prisma {
   export type attendanceUncheckedUpdateWithoutSubjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
   export type attendanceUncheckedUpdateManyWithoutSubjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: IntFieldUpdateOperationsInput | number
-    teacherId?: IntFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     is_present?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  }
-
-  export type EbookCreateManyPdf_thumbnailInput = {
-    id?: number
-    book_name: string
-    writer: string
-    genre: string
-    description: string
-    pdf_name: string
-    pdf_url?: string | null
-    pdf_url_createdAt: Date | string
-    createdAt?: Date | string
-  }
-
-  export type EbookUpdateWithoutPdf_thumbnailInput = {
-    book_name?: StringFieldUpdateOperationsInput | string
-    writer?: StringFieldUpdateOperationsInput | string
-    genre?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EbookUncheckedUpdateWithoutPdf_thumbnailInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    book_name?: StringFieldUpdateOperationsInput | string
-    writer?: StringFieldUpdateOperationsInput | string
-    genre?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EbookUncheckedUpdateManyWithoutPdf_thumbnailInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    book_name?: StringFieldUpdateOperationsInput | string
-    writer?: StringFieldUpdateOperationsInput | string
-    genre?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    pdf_name?: StringFieldUpdateOperationsInput | string
-    pdf_url?: NullableStringFieldUpdateOperationsInput | string | null
-    pdf_url_createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacherId?: IntFieldUpdateOperationsInput | number
   }
 
 

@@ -15,10 +15,21 @@ import pdfuploadRouter from './src/routes/pdf.upload.route.js'
 import eventRouter from './src/routes/Event.route.js'
 import ebookRouter from './src/routes/Ebook.route.js'
 import lostfoundRouter  from './src/routes/Lostfound.route.js'
+import redis from './src/config/redis.config.js'
+
 const PORT = process.env.PORT || 3000
 
 
+async function testConnection() {
+  try {
+    await redis.ping();
+    console.log('✅ Redis PING successful');
+  } catch (err) {
+    console.error('❌ Redis PING failed:', err);
+  }
+}
 
+testConnection();
 
 const app = express()
 app.use(cookieParser())
@@ -30,6 +41,7 @@ app.use(cors({
   methods: ["GET", "POST"]
 }))
 app.use(helmet())
+
 connectToMongoDB()
 
 .then(() => {

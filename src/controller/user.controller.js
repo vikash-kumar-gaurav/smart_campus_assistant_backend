@@ -2,6 +2,7 @@ import prisma from '../config/prismaConnect.js'
 import User from '../models/user.models.js'
 import bcrypt from 'bcrypt'
 import { generate_accessToken, generate_refreshToken } from '../utils/tokenGenerator.js';
+import redis from '../config/redis.config.js';
 
 
 // to create a new user we will give this permission to only admin and faculty
@@ -23,11 +24,12 @@ import { generate_accessToken, generate_refreshToken } from '../utils/tokenGener
             })
         }
 
-        const existtUser = await User.find({email:email})
+        const existtUser = await User.findOne({ email: email })
         if(existtUser){
             return res.status(401).json({
                 success: false,
-                msg:"user already available"
+                msg:"user already available",
+                existtUser
             })
         }
 
@@ -59,10 +61,11 @@ import { generate_accessToken, generate_refreshToken } from '../utils/tokenGener
         return res.status(200).json({
             msg:`hay ${userData.name} your account is created successfully`,
             success:true,
-            data:{
-                name:userData.name,
-                email:userData.email
-            }
+            // data:{
+            //     name:userData.name,
+            //     email:userData.email
+            // }
+            userData
         })
     } catch (error) {
 
@@ -86,24 +89,38 @@ import { generate_accessToken, generate_refreshToken } from '../utils/tokenGener
 
 //to create user in a bulk
 export async function bulkregisterController(req,res) {
-    const {studentName} = req.body
+    const {studentData} = req.body
     try {
-        if(!studentName || !Array.isArray(studentName)){
+        if(!studentData|| !Array.isArray(studentData)){
             return res.status(409).json({
                 msg:"Plese give an array of student name"
             })
         }
+        console.log(studentData);
+        
 
-        const password = await bcrypt.hash('123456',10)
-        const studentRecordforMongo = studentName.map(student => ({
-            name:student,
-            password:password,
-            profile_pic:'https://res.cloudinary.com/dacrc4ddi/image/upload/v1745756188/angry-girl-with-blonde-hair_g0nefe.jpg',
-            role:"faculty",
-            email:`${student}@email.com`
+        
+        const studentRecordforMongo = await Promise.all(studentData.map(async student => {
+            const Userpassword = `${student.name.split(' ')[0]}@${student.collegeId}`;
+            const hashedPassword = await bcrypt.hash(Userpassword, 10);
+            
+            
+            return {
+                name: student.name,
+                password: hashedPassword,
+                profile_pic: 'https://images.unsplash.com/photo-1635009870288-3b1c1b98fa35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNjaGFyeSUyMGdob3N0fGVufDB8fDB8fHww',
+                role: "student", // Should be "student" for bulk student registration
+                collegeId:student.collegeId,
+                roll_no:student.roll_no,
+                email: `${student.name.toLowerCase().split(' ')[0]}.bcastudent23.${student.collegeId}@cimage.in`
+            };
         }))
+        console.log(studentRecordforMongo);
+        
 
         const result = await User.insertMany(studentRecordforMongo, {ordered:false})
+        console.log(result);
+        
 
         const studentRecordForPostgres = result.map(studentDoc => ({
             name: studentDoc.name,
@@ -111,9 +128,11 @@ export async function bulkregisterController(req,res) {
             profile_pic: studentDoc.profile_pic,
             role: studentDoc.role,
             email: studentDoc.email,
-            UserMongoId: studentDoc._id
-            //semester:1,    these are for only students
-            //department:"BCA"   
+            UserMongoId: studentDoc._id,
+            semester:5,    //these are for only students
+            department:"BCA",
+            collegeId:studentDoc.collegeId,
+            roll_no:studentDoc.roll_no   
         }))
 
         const data = await prisma.user.createMany({
@@ -130,6 +149,7 @@ export async function bulkregisterController(req,res) {
 
     } catch (error) {
         console.log(`error from bulkregisterController ${error}`);
+
         return res.status(500).json({
             msg:"server error",
             success:false
@@ -155,7 +175,8 @@ export async function loginController(req,res) {
         }
 
         const user = await prisma.user.findUnique({
-            where:{email:email}
+            where:{email:email},
+            
         })
 
         if(!user){
@@ -263,22 +284,35 @@ export async function findUserController(req, res) {
                 msg: "Please provide all details",
                 success: false
             });
-        }
+        }//here we collect the data form the redis and send the studentData
+        console.log(department,semester);
+        
+        const key = `attendance:${department}:${parseInt(semester)}`;
+        const cached = await redis.get(key);
+        console.log("cached data is ",cached);
+        
+
+
 
         const users = await prisma.user.findMany({
             where: {
-                department: department,
-                semester: parseInt(semester) // Ensure semester is an integer
+            department: department,
+            semester: parseInt(semester) // Ensure semester is an integer
             },
-            select:{
-                id:true,
-                name:true
+            select: {
+            id: true,
+            name: true,
+            roll_no:true,
+            collegeId:true
+            },
+            orderBy: {
+            id: 'asc'
             }
         });
 
         return res.status(200).json({
             success: true,
-            users
+            users: cached ? JSON.parse(cached) : users
         });
         
     } catch (error) {

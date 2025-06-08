@@ -1,4 +1,5 @@
 import prisma from "../config/prismaConnect.js";
+import redis from "../config/redis.config.js";
 //to mark attandance of individuals 
 export async function markAttendanceController(req, res) {
     const { studentId, subjectId, is_present, date } = req.body;
@@ -59,51 +60,66 @@ export async function seeAttendanceControllerr(req,res) {
 }
 
 //se your own attendance fors student
-export async function StudentAttendenceController(req,res) {
+export async function StudentAttendenceController(req, res) {
+  const { month } = req.query;
+  console.log(month);
+  
 
-   try {
-       const userId = req.userData.id
-        const targetDate = new Date('2025-04-01');
-        const targetEndDay = new Date('2025-06-29')
+  try {
+    const userId = req.userData.id;
 
-        // Start of the day: 00:00:00.000
-        const startOfDay = new Date(targetDate);
-        startOfDay.setHours(0, 0, 0, 0);
+    // Parse month and calculate range
+    const now = new Date();
+    const year = now.getFullYear();
+    const monthIndex = parseInt(month) - 1; // JavaScript month is 0-based
 
-        // End of the day: 23:59:59.999
-        const endOfDay = new Date(targetEndDay);
-        endOfDay.setHours(23, 59, 59, 999);
-        const attendance = await prisma.attendance.findMany({
-        where:{
-            studentId:userId,
-            date:{
-            gte: startOfDay,
-            lte: endOfDay
-            }
-        },
-        include:{
-            teacher:true,
-            subject:true
+    const startDate = new Date(year, monthIndex, 1); // e.g., 2025-06-01
+    const endDate = new Date(year, monthIndex + 1, 0, 23, 59, 59, 999); // e.g., 2025-06-30 23:59:59
+
+    const attendance = await prisma.attendance.findMany({
+      where: {
+        studentId: parseInt(userId),
+        date: {
+          gte: startDate,
+          lte: endDate
         }
-       })
+      },
+      select: {
+        date: true,
+        is_present: true,
+        subject: {
+          select: {
+            name: true,
+            faculty: {
+              select: {
+                name: true
+              }
+            }
+          }
+        }
+      }
+    });
 
-       return res.status(200).json({
-        success:true,
-        attendance
-       })
-   } catch (error) {
-    console.log("error from studentAttendanceController",error.message || error);
+    return res.status(200).json({
+      success: true,
+      attendance
+    });
+  } catch (error) {
+    console.error("Error from StudentAttendanceController:", error.message || error);
     return res.status(500).json({
-        success:true,
-        msg:"Server errror"
-       })
-   }
-    
+      success: false,
+      msg: "Server error"
+    });
+  }
 }
+
 
 //mark attendance of bunch of students
 export async function markBunchAttendanceController(req,res) {
     const { subjectId } = req.query
+    const { department } = req.query
+    const { semester } = req.query
+
     const {studentData} = req.body
     const role = req.userData?.role
     const userId = req.userData?.id
@@ -135,6 +151,26 @@ export async function markBunchAttendanceController(req,res) {
             data:attendanceRecord,
             skipDuplicates:true
         })
+
+        //here redis setup for temperory storage of aattendance
+        
+
+            const key = `attendance:${department}:${parseInt(semester)}`;
+            await redis.del(key)
+            const cached = await redis.set(
+                key,
+                JSON.stringify(studentData),
+                "EX", 7200
+            );
+            console.log(department,parseInt(semester));
+            
+            console.log("redis cached data is", cached);
+
+            // Retrieve and print what is saved in Redis
+            const savedData = await redis.get(key);
+            console.log("Data saved in Redis:", savedData);
+            
+        
 
         return res.status(201).json({
             msg:"attendance marked successfully",
