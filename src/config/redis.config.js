@@ -1,5 +1,8 @@
 import Redis from 'ioredis'
 
+
+console.log(process.env.REDIS_END_PONT,process.env.REDIS_PORT,process.env.REDIS_PASSWORD);
+
 const redis = new Redis({
     host:process.env.REDIS_END_PONT,
     port:parseInt(process.env.REDIS_PORT),
