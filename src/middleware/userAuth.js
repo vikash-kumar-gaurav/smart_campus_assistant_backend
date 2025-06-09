@@ -39,8 +39,8 @@ async function validateToken(req, res, next) {
 
                 res.cookie('accessToken', newAccessToken, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production' || false,
-                    sameSite: 'Strict',
+                    secure: process.env.product_status === 'development' || false,
+                    sameSite: 'none',
                 });
 
                 return next();

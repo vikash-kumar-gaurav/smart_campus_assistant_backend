@@ -202,8 +202,8 @@ export async function loginController(req,res) {
 
         const cookieOptions = {
             httpOnly:true,
-            secure:false,
-            sameSite:'lax'
+            secure: process.env.product_status === 'development' || false,
+            sameSite:'none'
         }
 
         res.cookie('accessToken', accessToken, cookieOptions);
